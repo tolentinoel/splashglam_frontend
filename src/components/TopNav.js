@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
+import {Link} from 'react-router-dom'
 
 
 const TopNav = () => {
@@ -10,12 +11,12 @@ const TopNav = () => {
         <Navbar bg="light" variant="light">
             <Navbar.Brand href="#home">SplashGlam</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Profile</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/profile">Profile</Nav.Link>
                 </Nav>
 
-                <Button variant="outline-primary">Logout</Button>
+                <Button variant="outline-primary"><Link to="/">Home</Link></Button>
+                <Button variant="outline-primary"><Link to="/profile">Profile</Link></Button>
 
         </Navbar>
     )
