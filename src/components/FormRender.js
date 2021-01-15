@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 class FormRender extends Component {
+
+  state = {
+    id: "",
+    name: "",
+    username : "",
+    password : ""
+  }
     render() {
         return (
             <div>
-                <Form>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
+              <h1>{this.props.name}</h1>
+              {this.props.name === "SignUp" ?
 
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  <Form.Group controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+                <Form.Group >
+                    <Form.Label htmlFor="name">Name</Form.Label>
+                    <Form.Control type="text" name="name"/>
+                </Form.Group> : null}
+
+                <Form.Group >
+                    <Form.Label htmlFor="username">Username</Form.Label>
+                    <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                </Form.Group>
+
+                <Form.Group >
+                    <Form.Label htmlFor="password">Password</Form.Label>
+                    <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                </Form.Group>
+
+                {this.props.name === "Update" ?
+                  <Button id="update_btn" variant="outline-warning" type="submit" >Update</Button> :
+                  <Button variant="primary" type="submit" >{this.props.name === "SignUp" ? "Sign up" : "Log in"}</Button> }
+                
+
+
             </div>
         );
     }

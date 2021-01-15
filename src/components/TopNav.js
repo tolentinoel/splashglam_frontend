@@ -11,12 +11,12 @@ const TopNav = () => {
         <Navbar bg="light" variant="light">
             <Navbar.Brand href="#home">SplashGlam</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/profile">Profile</Nav.Link>
+                    <Nav.Link href="/">All Products</Nav.Link>
                 </Nav>
 
-                <Button variant="outline-primary"><Link to="/">Home</Link></Button>
+            
                 <Button variant="outline-primary"><Link to="/profile">Profile</Link></Button>
+                <Button variant="outline-danger"><Link to="/login">Logout</Link></Button>
 
         </Navbar>
     )
