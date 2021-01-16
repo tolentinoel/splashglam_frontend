@@ -6,8 +6,8 @@ import TopNav from './components/TopNav';
 import FormRender from './components/FormRender';
 import Home from './components/Home';
 import ProductList from './components/ProductList';
-import Product from './components/Product';
 import Profile from './components/Profile';
+import Product from './components/Product';
 import NotFound from './components/NotFound';
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
 
   renderProductPage = (r_props) => {
     console.log(r_props)
-  // <div><Product productId={r_props.match.params.id} /></div>
+  return <Product productId={r_props.match.params.id} />
   }
 
   renderHome = () => <Home name={this.state.user.name} />
@@ -26,18 +26,29 @@ class App extends React.Component {
   renderForm = (routerProps) => {
     switch (routerProps.location.pathname){
       case "/signup" :
-        return <div className='form_div'><FormRender name="SignUp" /></div>
+        return <div className='form_div'><FormRender name="SignUp" handleSubmit={this.handleSignup}/></div>
 
       case "/login" :
-        return <div className='form_div'><FormRender name="Login" /></div>
+        return <div className='form_div'><FormRender name="Login" handleSubmit={this.handleLogin}/></div>
 
+      case "/editprofile" :
+        return <div className='login_screen'><FormRender name="Update" handleSubmit={this.handleUpdate} /></div>
+        // handleDelete={this.openModal} history={this.props.history}
       default : break
     }
   }
 
-  renderAllProducts = () => {
-    return <div><ProductList/></div>
+  handleLogin = () =>{
+
   }
+
+  handleSignup = () => {
+    
+  }
+
+  // renderAllProducts = () => {
+  //   return <div><ProductList/></div>
+  // }
 
   render(){
     return (
