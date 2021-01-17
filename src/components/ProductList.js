@@ -37,7 +37,7 @@ class ProductList extends Component {
                     </Nav.Item>
                 </Nav>
                 <h1>All Products</h1>
-                {this.state.products.map(product => <ProductCard key={product.id} product={product}/>)}
+                {this.state.products.map(product => <ProductCard key={product.id} product={product} addToList={this.props.addToList}/>)}
             </div>
         );
     }

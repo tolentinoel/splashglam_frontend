@@ -17,6 +17,7 @@ class ProductCard extends Component {
                     </ListGroup>
                     <Card.Body className="list-group-flush">
                         <Link><h6 className="p_card_name">{this.props.product.name}</h6></Link>
+                        <Link><img src="https://image.flaticon.com/icons/png/512/1443/1443708.png" width="40px" height="40px" alt="product_image"/></Link>
                     </Card.Body>
                 </Card>
 
