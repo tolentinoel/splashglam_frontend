@@ -17,20 +17,38 @@ class App extends React.Component {
     token: ""
   }
 
+  componentDidMount() {
+    if(localStorage.getItem('jwt')){
+      fetch('http://localhost:3000/getuser',{
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization' : `Bearer ${localStorage.getItem('jwt')}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+          this.setState({ user: data.user, token: data.token })
+          this.handleRefresh(data)
+      })
+    }
+  }
+
+  renderHome = () => <Home loggedIn={!!this.state.user} user={this.state.user} token={localStorage.getItem('jwt')} refresh={this.handleRefresh}/>
+
   renderProductPage = (r_props) => {
   return <Product productId={r_props.match.params.id}/>
   }
 
-
-  renderHome = () => <Home loggedIn={!!this.state.user} user={this.state.user} token={localStorage.getItem('jwt')} refresh={this.handleRefresh}/>
-
-
-  handleRefresh = (data) => {
-    this.setState({user: data.user})
+  renderProfilePage = () => {
+    console.log("CLICKING BUTTONNNNNN")
+    return <Profile user={this.state.user} handleDelete={this.handleDelete}/>
   }
+  
+
 
   renderForm = (routerProps) => {
-    // console.log(routerProps)
+
     switch (routerProps.location.pathname){
       case "/signup" :
         return <FormRender name="SignUp" handleSubmit={this.handleSignup} history={this.props.history}/>
@@ -38,16 +56,15 @@ class App extends React.Component {
       case "/login" :
         return <FormRender name="Login" handleSubmit={this.handleLogin} history={this.props.history}/>
 
-      case "/editprofile" :
-        return <FormRender name="Update" handleSubmit={this.handleUpdate} />
-        // handleDelete={this.openModal} 
       default : break
     }
   }
 
+  handleRefresh = (data) => {
+    this.setState({user: data.user, token: data.token})
+  }
+
   handleSignup = (info) => {
-    // debugger
-    // console.log(info)
     let data = {
       name: info.name,
       username: info.username,
@@ -76,7 +93,6 @@ class App extends React.Component {
   }
 
   handleAuth = (data, resource, method) => {
-    // debugger
     fetch(resource, {
       method:  method,
       headers: {"Content-Type": "application/json"},
@@ -84,7 +100,6 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      // debugger
       this.setState({user: data.user, token: data.token} ,() => {
         this.props.history.push('/products')
       })
@@ -111,6 +126,16 @@ class App extends React.Component {
     this.props.history.push(
       data.error === "Invalid credentials, please try again." ? '/login' : '/signup')
     }
+  }
+
+  handleDelete = () => {
+
+    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+      method:  "DELETE",
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(res => res.json())
+    .then(() => this.handleLogout())
   }
 
   newList = (event) => {
@@ -140,15 +165,13 @@ class App extends React.Component {
     })
   }
 
-  renderProfilePage = () => {
-    this.props.history.push('/profile')
-  
-}
 
 
-  render(){
+
+  render() {
     return (
       <div className="App">
+        
         <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.newList}/>
 
           <Switch>
@@ -162,7 +185,7 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/products" >
-              {!!localStorage.getItem('jwt') ? <Route path="/products" exact component={ProductList}/> :  <Redirect to="/" /> }
+              {!!localStorage.getItem('jwt') ?   <Route path="/products" exact component={ProductList}/> : <Redirect to="/" />  }
             </Route>
 
             <Route exact path="/products/:id" >
@@ -170,12 +193,12 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/">
-              {this.renderHome()}
-              {/* {!!localStorage.getItem('jwt') ? this.renderHome() : <Redirect to="/products" /> } */}
+              {/* {this.renderHome()} */}
+              {!!localStorage.getItem('jwt') ?  this.renderHome() : <Redirect to="/login" />  }
             </Route>
 
             <Route exact path="/profile" >
-              {!!localStorage.getItem('jwt') ? <Route path="/profile" exact component={Profile}/> : <Redirect to="/login"/> }
+              {!!localStorage.getItem('jwt') ? <Route path="/profile" render={this.renderProfilePage}/> : <Redirect to="/login"/> }
             </Route>
 
             <Route component={NotFound}/>
