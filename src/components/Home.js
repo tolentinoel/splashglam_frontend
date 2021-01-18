@@ -28,7 +28,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                {this.props.loggedIn ?
+                {this.props.user ?
 
                 <div className='home_jumbotron'>
                     <h1 className="about_header">YOU'RE LOGGED IN!</h1>

@@ -14,8 +14,8 @@ const TopNav = ({loggedIn, createList, handleLogout, renderProfilePage}) => {
 
                 {loggedIn ?
                     <Nav>
-                        <Button variant="outline-primary"><Nav.Link href="/login">Log In</Nav.Link></Button>
-                        <Button variant="outline-primary"><Nav.Link href="/signup">Sign Up</Nav.Link></Button>
+                    <Button variant="outline-primary"><Nav.Link href="/login">Log In</Nav.Link></Button>
+                    <Button variant="outline-primary"><Nav.Link href="/signup">Sign Up</Nav.Link></Button>
                     </Nav>
                     :
                     <Nav>
@@ -23,7 +23,8 @@ const TopNav = ({loggedIn, createList, handleLogout, renderProfilePage}) => {
                         <Button variant="outline-primary" onClick={() => renderProfilePage()}>Profile</Button>
                         <Button variant="outline-danger" onClick={() => handleLogout()}>Logout</Button>
                     </Nav>
-
+                    
+                    
                 }
         </Navbar>
     )
