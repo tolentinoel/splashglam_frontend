@@ -1,4 +1,7 @@
+import Button from 'react-bootstrap/Button';
 import React from 'react';
+import '../css/Product.css';
+
 
 class Product extends React.Component {
 
@@ -9,7 +12,7 @@ class Product extends React.Component {
                 <h1>Product page</h1>
                 <h2>Brand</h2>
                 <h3>Description</h3>
-
+                <Button variant="outline-primary" href='/products'>Back to Products</Button>
             </div>
         );
     }

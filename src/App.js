@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TopNav from './components/TopNav';
@@ -17,18 +17,17 @@ class App extends React.Component {
     token: ""
   }
 
-  // componentDidMount() {
-  //   fetch('')
-  // }
-
   renderProductPage = (r_props) => {
-    // console.log(r_props)
-  return <Product productId={r_props.match.params.id} addToList={this.addToList}/>
+  return <Product productId={r_props.match.params.id}/>
   }
 
 
+  renderHome = () => <Home loggedIn={!!this.state.user} user={this.state.user} token={localStorage.getItem('jwt')} refresh={this.handleRefresh}/>
 
-  renderHome = () => <Home />
+
+  handleRefresh = (data) => {
+    this.setState({user: data.user})
+  }
 
   renderForm = (routerProps) => {
     // console.log(routerProps)
@@ -41,7 +40,7 @@ class App extends React.Component {
 
       case "/editprofile" :
         return <FormRender name="Update" handleSubmit={this.handleUpdate} />
-        // handleDelete={this.openModal} history={this.props.history}
+        // handleDelete={this.openModal} 
       default : break
     }
   }
@@ -85,22 +84,22 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      debugger
+      // debugger
       this.setState({user: data.user, token: data.token} ,() => {
         this.props.history.push('/products')
       })
 
-      // if (data.error) {
-      //   this.handleError(data) }
-      // else {
-      //   this.setState({user: data.user} ,() => {
-      //     if (data.token){
-      //       localStorage.setItem('jwt', data.token)
-      //       this.props.history.push('/home')
-      //     }  else  {
-      //       alert("Profile Succesfully Updated!")
-      //       this.props.history.push('/home')}
-      // })}
+      if (data.error) {
+        this.handleError(data) }
+      else {
+        this.setState({user: data.user} ,() => {
+          if (data.token){
+            localStorage.setItem('jwt', data.token)
+            this.props.history.push('/products')
+          }  else  {
+            alert("Profile Succesfully Updated!")
+            this.props.history.push('/products')}
+      })}
     })
   }
 
@@ -114,31 +113,73 @@ class App extends React.Component {
     }
   }
 
-  addToList = (product) => {
-    fetch('http://localhost:8000/list', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.state.token}`
-      },
-      body: JSON.stringify({product_id: product.id})
-    })
-    .then(res => res.json())
-    .then(console.log)
+  newList = (event) => {
+    debugger
+    event.preventDefault()
+    // let obj = {
+    //   title: object.title,
+    //   user_id: this.state.user.id
+    // }
+    // debugger
+    // fetch('http://localhost:8000/list', {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Authorization": `Bearer ${this.state.token}`
+    //   },
+    //   body: JSON.stringify(obj)
+    // })
+    // .then(res => res.json())
+    // .then(console.log)
   }
+
+  handleLogout = () => {
+    localStorage.clear()
+    this.setState({user: ""}, ()=>{
+      this.props.history.push('/login')
+    })
+  }
+
+  renderProfilePage = () => {
+    this.props.history.push('/profile')
+  
+}
+
 
   render(){
     return (
       <div className="App">
-          <TopNav />
+        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.newList}/>
+
           <Switch>
-          <Route path="/" exact component={this.renderHome}/>
-          <Route path="/login" exact component={this.renderForm}/>
-          <Route path="/signup" exact component={this.renderForm}/>
-          <Route path="/products" component={ProductList}/>
-          <Route path="/products/:id" render={this.renderProductPage}/>
-          <Route path="/profile" component={Profile}/>
-          <Route component={NotFound}/>
+
+            <Route exact path="/login" >
+              {!!localStorage.getItem('jwt') ? <Redirect to="/" /> : <Route path="/login" exact component={this.renderForm}/>}
+            </Route>
+
+            <Route exact path="/signup" >
+              {!!localStorage.getItem('jwt') ? <Redirect to="/" /> : <Route path="/signup" exact component={this.renderForm}/>}
+            </Route>
+
+            <Route exact path="/products" >
+              {!!localStorage.getItem('jwt') ? <Route path="/products" exact component={ProductList}/> :  <Redirect to="/" /> }
+            </Route>
+
+            <Route exact path="/products/:id" >
+              {!!localStorage.getItem('jwt') ? <Route exact path="/products/:id" render={this.renderProductPage} /> : <Redirect to="/" /> }
+            </Route>
+
+            <Route exact path="/">
+              {this.renderHome()}
+              {/* {!!localStorage.getItem('jwt') ? this.renderHome() : <Redirect to="/products" /> } */}
+            </Route>
+
+            <Route exact path="/profile" >
+              {!!localStorage.getItem('jwt') ? <Route path="/profile" exact component={Profile}/> : <Redirect to="/login"/> }
+            </Route>
+
+            <Route component={NotFound}/>
+
           </Switch>
       </div>
     )

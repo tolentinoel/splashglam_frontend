@@ -27,17 +27,17 @@ class ProductList extends Component {
                         <Nav.Link href="/products">All</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/products">Normal or Combination</Nav.Link>
+                        <Nav.Link href="/normal">Normal or Combination</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/products">Oily</Nav.Link>
+                        <Nav.Link href="/oily">Oily</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/products">Dry</Nav.Link>
+                        <Nav.Link href="/dry">Dry</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <h1>All Products</h1>
-                {this.state.products.map(product => <ProductCard key={product.id} product={product} addToList={this.props.addToList}/>)}
+                {this.state.products.map(product => <ProductCard key={product.id} product={product} />)}
             </div>
         );
     }
