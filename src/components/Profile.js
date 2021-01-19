@@ -8,27 +8,31 @@ import '../css/Profile.css';
 
 class Profile extends Component {
 
-mapUserList = () => {
-    this.props.user.lists.forEach(list_obj => {
-        return <Dropdown.Item eventKey={list_obj.id}>{list_obj.title}</Dropdown.Item>
-    })
-}
+    mapUserList = () => {
+
+        // console.log(this.props.user.lists)
+        // debugger
+        if (this.props.user){
+            return this.props.user.lists.length !== 0 ? this.props.user.lists.map(list_obj => <Dropdown.Item key={list_obj.id} eventKey={list_obj.id}>{list_obj.title}</Dropdown.Item>) : <Dropdown.Item key="1" eventKey="1">No available list</Dropdown.Item>
+        }
+
+    }
+
     render() {
         return (
             <div className="profile_div">
                 <div className="profile_sideNav">
                     <ButtonGroup vertical>
-                        <Button variant="outline-success">Edit Profile</Button>
-                        <Button variant="outline-success">Button</Button>
+                        <Button key="button1" variant="outline-success">Edit Profile</Button>
+                        <Button key="button2" variant="outline-success">Button</Button>
 
-                        <DropdownButton variant="outline-success" as={ButtonGroup} title="Lists" id="bg-vertical-dropdown-1">
+                        <DropdownButton key="dropdown" variant="outline-success" as={ButtonGroup} title="Lists" id="bg-vertical-dropdown-1">
                         {this.mapUserList()}
-
-                        <Dropdown.Item eventKey="2">user.list.title</Dropdown.Item>
+                        {/* {this.props.user.lists.length !== 0 ? <Dropdown.Item eventKey="1">No available list</Dropdown.Item> : this.mapUserList()} */}
                         </DropdownButton>
 
-                        <Button variant="outline-success" href='/products'>Back to Products</Button>
-                        <Button variant="outline-danger" onClick={() => this.props.handleDelete()}>Delete Account</Button>
+                        <Button key="button3" variant="outline-success" href='/products'>Back to Products</Button>
+                        <Button key="button4" variant="outline-danger" onClick={() => this.props.handleDelete()}>Delete Account</Button>
 
                     </ButtonGroup>
                 </div>

@@ -9,12 +9,18 @@ import ProductList from './components/ProductList';
 import Profile from './components/Profile';
 import Product from './components/Product';
 import NotFound from './components/NotFound';
+import ModalForm from './components/ModalForm';
+// import Alert from 'react-bootstrap/Alert'
 
 class App extends React.Component {
 
   state= {
     user: "",
-    token: ""
+    token: "",
+    isOpen: false,
+    modalForm: false,
+    productId: null
+
   }
 
   componentDidMount() {
@@ -40,11 +46,15 @@ class App extends React.Component {
   return <Product productId={r_props.match.params.id}/>
   }
 
+  renderProductList = () => {
+    return <ProductList createList={this.createList}/>
+  }
+
   renderProfilePage = () => {
-    console.log("CLICKING BUTTONNNNNN")
+
     return <Profile user={this.state.user} handleDelete={this.handleDelete}/>
   }
-  
+
 
 
   renderForm = (routerProps) => {
@@ -138,25 +148,57 @@ class App extends React.Component {
     .then(() => this.handleLogout())
   }
 
-  newList = (event) => {
-    debugger
-    event.preventDefault()
-    // let obj = {
-    //   title: object.title,
-    //   user_id: this.state.user.id
-    // }
-    // debugger
-    // fetch('http://localhost:8000/list', {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Authorization": `Bearer ${this.state.token}`
-    //   },
-    //   body: JSON.stringify(obj)
-    // })
-    // .then(res => res.json())
-    // .then(console.log)
+  renderModalForm = () => this.setState({ modalForm: true })
+  openModal = () => this.setState({ isOpen: true });
+  closeModal = () => this.setState({
+      isOpen: false,
+    modalForm: false
+  })
+
+  createList = (productId) => {
+
+      this.setState({productId}, () => {
+        this.openModal()
+        this.renderModalForm()
+      })
+      
+
   }
+
+//   handleTitle = (listTitle) => {
+//     this.setState(prevState =>{
+//       return{
+//         modalForm: false,
+//         newList: {...prevState.newList, title: listTitle}
+//       }
+//     }, () => {
+//         this.postNewList()
+//     })
+//     this.closeModal()
+// }
+
+
+// postNewList = () => {
+//   const listObject = this.state.newList
+//   debugger
+//     fetch('http://localhost:3000/lists',{
+//         method: 'POST',
+//         headers: {
+//             'Content-Type' : 'application/json',
+//             'Accept' : 'application/json'
+//         },
+//         body: JSON.stringify({
+//             title: listObject.title,
+//             user_id: this.state.user.id
+//         })
+//     })
+//     .then(resp => resp.json())
+//     .then(data => {
+//       <Alert variant="info">
+//       Done! {data.title} successfully made!
+//     </Alert>
+//     })
+// }
 
   handleLogout = () => {
     localStorage.clear()
@@ -171,8 +213,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        
-        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.newList}/>
+
+        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.createList}/>
 
           <Switch>
 
@@ -185,7 +227,7 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/products" >
-              {!!localStorage.getItem('jwt') ?   <Route path="/products" exact component={ProductList}/> : <Redirect to="/" />  }
+              {!!localStorage.getItem('jwt') ?   <Route path="/products" render={this.renderProductList}/> : <Redirect to="/" />  }
             </Route>
 
             <Route exact path="/products/:id" >
@@ -193,8 +235,8 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/">
-              {/* {this.renderHome()} */}
-              {!!localStorage.getItem('jwt') ?  this.renderHome() : <Redirect to="/login" />  }
+
+              {!!localStorage.getItem('jwt') ? <Redirect to="/login" /> :<Route path="/" render={this.renderHome}/> }
             </Route>
 
             <Route exact path="/profile" >
@@ -204,6 +246,10 @@ class App extends React.Component {
             <Route component={NotFound}/>
 
           </Switch>
+
+            { this.state.modalForm ?
+              <ModalForm closeModal={this.closeModal} isOpen={this.state.isOpen} handleTitle={this.handletitle} user={this.state.user} productId={this.state.productId}/> : null
+            }
       </div>
     )
   }
