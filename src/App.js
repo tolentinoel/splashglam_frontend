@@ -19,7 +19,8 @@ class App extends React.Component {
     token: "",
     isOpen: false,
     modalForm: false,
-    productId: null
+    productId: null,
+    product: null
 
   }
 
@@ -54,8 +55,6 @@ class App extends React.Component {
 
     return <Profile user={this.state.user} handleDelete={this.handleDelete}/>
   }
-
-
 
   renderForm = (routerProps) => {
 
@@ -210,6 +209,8 @@ class App extends React.Component {
 
 
 
+
+
   render() {
     return (
       <div className="App">
@@ -248,7 +249,7 @@ class App extends React.Component {
           </Switch>
 
             { this.state.modalForm ?
-              <ModalForm closeModal={this.closeModal} isOpen={this.state.isOpen} handleTitle={this.handletitle} user={this.state.user} productId={this.state.productId}/> : null
+              <ModalForm closeModal={this.closeModal} isOpen={this.state.isOpen} handleTitle={this.handletitle} user={this.state.user} productId={this.state.productId} product={this.state.product}/> : null
             }
       </div>
     )

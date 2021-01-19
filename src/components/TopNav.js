@@ -14,7 +14,6 @@ const TopNav = ({loggedIn, createList, handleLogout, renderProfilePage}) => {
 
                 {loggedIn ?
                     <Nav>
-                        <Button variant="outline-primary" >Create A List</Button>
                         <Button variant="outline-primary" onClick={() => renderProfilePage()}><Nav.Link href="/profile">Profile</Nav.Link></Button>
                         <Button variant="outline-danger" onClick={() => handleLogout()}>Logout</Button>
                     </Nav>
