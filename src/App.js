@@ -16,12 +16,8 @@ class App extends React.Component {
 
   state= {
     user: "",
-    token: "",
-    isOpen: false,
-    modalForm: false,
-    productId: null,
-    product: null
-
+    token: ""
+    
   }
 
   componentDidMount() {
@@ -48,7 +44,7 @@ class App extends React.Component {
   }
 
   renderProductList = () => {
-    return <ProductList createList={this.createList}/>
+    return <ProductList createList={this.createList} user={this.state.user}/>
   }
 
   renderProfilePage = () => {
@@ -101,6 +97,34 @@ class App extends React.Component {
     this.handleAuth(data, `http://localhost:3000/users/${info.id}`, "PATCH")
   }
 
+  handleDelete = () => {
+
+    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+      method:  "DELETE",
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(res => res.json())
+    .then(() => this.handleLogout())
+  }
+
+  handleLogout = () => {
+    localStorage.clear()
+    this.setState({user: ""}, ()=>{
+      this.props.history.push('/login')
+    })
+  }
+
+
+  handleError = (data) => {
+    alert(`${data.error}`)
+    if (data.error === "That username is already been used. Please specify another username."){
+      this.props.history.push("/editprofile")
+    } else {
+    this.props.history.push(
+      data.error === "Invalid credentials, please try again." ? '/login' : '/signup')
+    }
+  }
+
   handleAuth = (data, resource, method) => {
     fetch(resource, {
       method:  method,
@@ -126,89 +150,6 @@ class App extends React.Component {
       })}
     })
   }
-
-  handleError = (data) => {
-    alert(`${data.error}`)
-    if (data.error === "That username is already been used. Please specify another username."){
-      this.props.history.push("/editprofile")
-    } else {
-    this.props.history.push(
-      data.error === "Invalid credentials, please try again." ? '/login' : '/signup')
-    }
-  }
-
-  handleDelete = () => {
-
-    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
-      method:  "DELETE",
-      headers: {"Content-Type": "application/json"}
-    })
-    .then(res => res.json())
-    .then(() => this.handleLogout())
-  }
-
-  renderModalForm = () => this.setState({ modalForm: true })
-  openModal = () => this.setState({ isOpen: true });
-  closeModal = () => this.setState({
-      isOpen: false,
-    modalForm: false
-  })
-
-  createList = (productId) => {
-
-      this.setState({productId}, () => {
-        this.openModal()
-        this.renderModalForm()
-      })
-      
-
-  }
-
-//   handleTitle = (listTitle) => {
-//     this.setState(prevState =>{
-//       return{
-//         modalForm: false,
-//         newList: {...prevState.newList, title: listTitle}
-//       }
-//     }, () => {
-//         this.postNewList()
-//     })
-//     this.closeModal()
-// }
-
-
-// postNewList = () => {
-//   const listObject = this.state.newList
-//   debugger
-//     fetch('http://localhost:3000/lists',{
-//         method: 'POST',
-//         headers: {
-//             'Content-Type' : 'application/json',
-//             'Accept' : 'application/json'
-//         },
-//         body: JSON.stringify({
-//             title: listObject.title,
-//             user_id: this.state.user.id
-//         })
-//     })
-//     .then(resp => resp.json())
-//     .then(data => {
-//       <Alert variant="info">
-//       Done! {data.title} successfully made!
-//     </Alert>
-//     })
-// }
-
-  handleLogout = () => {
-    localStorage.clear()
-    this.setState({user: ""}, ()=>{
-      this.props.history.push('/login')
-    })
-  }
-
-
-
-
 
 
   render() {
@@ -248,9 +189,6 @@ class App extends React.Component {
 
           </Switch>
 
-            { this.state.modalForm ?
-              <ModalForm closeModal={this.closeModal} isOpen={this.state.isOpen} handleTitle={this.handletitle} user={this.state.user} productId={this.state.productId} product={this.state.product}/> : null
-            }
       </div>
     )
   }

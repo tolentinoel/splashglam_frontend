@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import ProductCard from './ProductCard';
 import Nav from 'react-bootstrap/Nav';
-// import ModalForm from './ModalForm';
+
 
 class ProductList extends Component {
 
     state = {
         products: []
+       
     }
 
 
@@ -18,6 +19,8 @@ class ProductList extends Component {
             this.setState({products: data})
         })
     }
+
+    
 
     render() {
         return (
@@ -36,10 +39,10 @@ class ProductList extends Component {
                         <Nav.Link href="/dry">Dry</Nav.Link>
                     </Nav.Item>
                 </Nav>
-                
+
                 <h1>All Products</h1>
-                {this.state.products.map(product => <ProductCard key={product.id} product={product} createList={this.props.createList}/>)}
-                
+                {this.state.products.map(product => <ProductCard key={product.id} product={product} createList={this.props.createList} user={this.props.user}/>)}
+
             </div>
         );
     }
