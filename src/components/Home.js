@@ -10,25 +10,11 @@ class Home extends Component {
         user:""
     }
 
-    componentDidMount() {
-        fetch('http://localhost:3000/getuser',{
-          method: 'GET',
-          headers: {
-            "Content-Type": "application/json",
-            'Authorization' : `Bearer ${localStorage.getItem('jwt')}`
-        }})
-        .then(res => res.json())
-        .then(data => {
-            this.setState({ user: data.user})
-            this.props.refresh(data)
-        })
-    }
-
 
     render() {
         return (
             <div className="home">
-                {this.props.loggedIn ?
+                {this.props.user ?
 
                 <div className='home_jumbotron'>
                     <h1 className="about_header">YOU'RE LOGGED IN!</h1>

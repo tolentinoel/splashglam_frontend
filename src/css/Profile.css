@@ -1,0 +1,19 @@
+.profile_div{
+    min-height: 100%;
+}
+
+
+.profile_sideNav{
+    /* display: inline-block; */
+    float: left;
+    align-items: center;
+    height: 100vh;
+    width: 20%;
+    background: aliceblue;
+}
+
+.profile_content{
+    display:flex;
+    align-items: center;
+    
+}

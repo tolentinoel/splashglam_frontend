@@ -9,28 +9,51 @@ import ProductList from './components/ProductList';
 import Profile from './components/Profile';
 import Product from './components/Product';
 import NotFound from './components/NotFound';
+// import ModalForm from './components/ModalForm';
+// import Alert from 'react-bootstrap/Alert'
 
 class App extends React.Component {
 
   state= {
     user: "",
     token: ""
+
   }
+
+  componentDidMount() {
+    if(localStorage.getItem('jwt')){
+      fetch('http://localhost:3000/getuser',{
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization' : `Bearer ${localStorage.getItem('jwt')}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+          this.setState({ user: data.user, token: data.token })
+          this.handleRefresh(data)
+      })
+    }
+  }
+
+  renderHome = () => <Home loggedIn={!!this.state.user} user={this.state.user} token={localStorage.getItem('jwt')} refresh={this.handleRefresh}/>
 
   renderProductPage = (r_props) => {
   return <Product productId={r_props.match.params.id}/>
   }
 
+  renderProductList = () => {
+    return <ProductList createList={this.createList} user={this.state.user}/>
+  }
 
-  renderHome = () => <Home loggedIn={!!this.state.user} user={this.state.user} token={localStorage.getItem('jwt')} refresh={this.handleRefresh}/>
+  renderProfilePage = () => {
 
-
-  handleRefresh = (data) => {
-    this.setState({user: data.user})
+    return <Profile user={this.state.user} handleDelete={this.handleDelete}/>
   }
 
   renderForm = (routerProps) => {
-    // console.log(routerProps)
+
     switch (routerProps.location.pathname){
       case "/signup" :
         return <FormRender name="SignUp" handleSubmit={this.handleSignup} history={this.props.history}/>
@@ -38,16 +61,15 @@ class App extends React.Component {
       case "/login" :
         return <FormRender name="Login" handleSubmit={this.handleLogin} history={this.props.history}/>
 
-      case "/editprofile" :
-        return <FormRender name="Update" handleSubmit={this.handleUpdate} />
-        // handleDelete={this.openModal} 
       default : break
     }
   }
 
+  handleRefresh = (data) => {
+    this.setState({user: data.user, token: data.token})
+  }
+
   handleSignup = (info) => {
-    // debugger
-    // console.log(info)
     let data = {
       name: info.name,
       username: info.username,
@@ -75,8 +97,35 @@ class App extends React.Component {
     this.handleAuth(data, `http://localhost:3000/users/${info.id}`, "PATCH")
   }
 
+  handleDelete = () => {
+
+    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+      method:  "DELETE",
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(res => res.json())
+    .then(() => this.handleLogout())
+  }
+
+  handleLogout = () => {
+    localStorage.clear()
+    this.setState({user: ""}, ()=>{
+      this.props.history.push('/login')
+    })
+  }
+
+
+  handleError = (data) => {
+    alert(`${data.error}`)
+    if (data.error === "That username is already been used. Please specify another username."){
+      this.props.history.push("/editprofile")
+    } else {
+    this.props.history.push(
+      data.error === "Invalid credentials, please try again." ? '/login' : '/signup')
+    }
+  }
+
   handleAuth = (data, resource, method) => {
-    // debugger
     fetch(resource, {
       method:  method,
       headers: {"Content-Type": "application/json"},
@@ -84,7 +133,6 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      // debugger
       this.setState({user: data.user, token: data.token} ,() => {
         this.props.history.push('/products')
       })
@@ -103,53 +151,12 @@ class App extends React.Component {
     })
   }
 
-  handleError = (data) => {
-    alert(`${data.error}`)
-    if (data.error === "That username is already been used. Please specify another username."){
-      this.props.history.push("/editprofile")
-    } else {
-    this.props.history.push(
-      data.error === "Invalid credentials, please try again." ? '/login' : '/signup')
-    }
-  }
 
-  newList = (event) => {
-    debugger
-    event.preventDefault()
-    // let obj = {
-    //   title: object.title,
-    //   user_id: this.state.user.id
-    // }
-    // debugger
-    // fetch('http://localhost:8000/list', {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Authorization": `Bearer ${this.state.token}`
-    //   },
-    //   body: JSON.stringify(obj)
-    // })
-    // .then(res => res.json())
-    // .then(console.log)
-  }
-
-  handleLogout = () => {
-    localStorage.clear()
-    this.setState({user: ""}, ()=>{
-      this.props.history.push('/login')
-    })
-  }
-
-  renderProfilePage = () => {
-    this.props.history.push('/profile')
-  
-}
-
-
-  render(){
+  render() {
     return (
       <div className="App">
-        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.newList}/>
+
+        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.createList}/>
 
           <Switch>
 
@@ -162,7 +169,7 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/products" >
-              {!!localStorage.getItem('jwt') ? <Route path="/products" exact component={ProductList}/> :  <Redirect to="/" /> }
+              {!!localStorage.getItem('jwt') ?   <Route path="/products" render={this.renderProductList}/> : <Redirect to="/" />  }
             </Route>
 
             <Route exact path="/products/:id" >
@@ -170,17 +177,18 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/">
-              {this.renderHome()}
-              {/* {!!localStorage.getItem('jwt') ? this.renderHome() : <Redirect to="/products" /> } */}
+
+              {!!localStorage.getItem('jwt') ? <Redirect to="/login" /> :<Route path="/" render={this.renderHome}/> }
             </Route>
 
             <Route exact path="/profile" >
-              {!!localStorage.getItem('jwt') ? <Route path="/profile" exact component={Profile}/> : <Redirect to="/login"/> }
+              {!!localStorage.getItem('jwt') ? <Route path="/profile" render={this.renderProfilePage}/> : <Redirect to="/login"/> }
             </Route>
 
             <Route component={NotFound}/>
 
           </Switch>
+
       </div>
     )
   }
