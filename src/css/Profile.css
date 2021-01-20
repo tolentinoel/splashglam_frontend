@@ -8,8 +8,9 @@
     float: left;
     align-items: center;
     height: 100vh;
-    width: 20%;
+    width: 300px;
     background: aliceblue;
+    padding-top: 50px;
 }
 
 .profile_content{

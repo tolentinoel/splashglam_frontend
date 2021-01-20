@@ -15,50 +15,6 @@ class FormRender extends Component {
     password : ""
   }
 
-//   handleAlert = (e) => {
-//     // debugger
-//     e.preventDefault()
-
-//     switch (true) {
-
-//         case (this.props.name === "Update" &&
-//         e.target.textContent === "Delete Account"):
-//           return this.props.handleDelete(this.state.id)
-
-//         case (this.props.name === "Login"):
-//           return this.props.handleSubmit(this.state)
-
-
-//         case (this.props.name === "Update"
-//         && this.state.username === "" ):
-//           return alert("Fields cannot be blank.")
-
-//         case (this.props.name === "Signup" &&
-//         this.state.username === ""):
-//           return alert("Fields cannot be blank.")
-
-//         case (this.props.name === "Signup" &&
-//         this.state.name === ""):
-//           return alert("Fields cannot be blank.")
-
-//         case (this.props.name === "SignUp" &&
-//         this.state.skin_type === ""):
-//           return alert("Fields cannot be blank.")
-
-//         case (this.props.name === "SignUp" &&
-//         this.state.password === ""):
-//           return alert("Fields cannot be blank.")
-
-//         default: {
-//           this.setState({
-//               username: "",
-//               password : "",
-//               skin_type: "",
-//               name: ""
-//           })}
-
-//     }
-// }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -108,8 +64,8 @@ class FormRender extends Component {
               {this.props.name === "Login" ?
               <h5>Don't have an account? <Link to="/signup" >Sign up!</Link></h5> : null }
 
-              {this.props.name === "Update" ?
-              <Button id="delete_btn" variant="outline-danger" type="submit" onClick={this.handleSubmit}>Delete Account</Button> : null }
+              {/* {this.props.name === "Update" ?
+              <Button id="delete_btn" variant="outline-danger" type="submit" onClick={this.handleSubmit}>Delete Account</Button> : null } */}
 
             </div>
           );

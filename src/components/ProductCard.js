@@ -4,8 +4,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/button";
 import { Link } from "react-router-dom";
 import ModalForm from "./ModalForm";
-import Alert from 'react-bootstrap/Alert'
-// import Toast from "react-bootstrap/Toast";
 import "../css/ProductCard.css";
 
 class ProductCard extends Component {
@@ -108,8 +106,9 @@ class ProductCard extends Component {
             })
               .then((resp) => resp.json())
               .then((data) => {
-                this.renderToast(data);
-                // console.log("AFTER POSTING TO LIST", data);
+                // this.renderToast(data);
+                console.log(data)
+                alert('Successfully added to list!')
               });
           }
         );
@@ -134,23 +133,12 @@ class ProductCard extends Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        // debugger
-        this.renderToast(data);
-        console.log("AFTER POSTING TO LIST", data);
+        console.log(data);
+        alert('Nice! Product added to list!')
       });
   };
 
-  renderToast = (data) => <Alert key={data.id} variant="success">Nicely done! Product added to list!</Alert>
-    // return (
-    //   <Toast>
-    //     <Toast.Header>
-    //       <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="logo" />
-    //       <strong className="mr-auto">SplashGlam</strong>
-    //       <small>Bookmark</small>
-    //     </Toast.Header>
-    //     <Toast.Body>Added to list!</Toast.Body>
-    //   </Toast>
-    // );
+  
  
   render() {
     let p_id = this.props.product.id;

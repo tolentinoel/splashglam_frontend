@@ -1,9 +1,18 @@
 .App {
   text-align: center;
 }
+
+
 /* #f1bc68 - butterscotch yellow*/
 /* #5f9595 - emerald sea - blue green */
-/*  #abb8bb - smoke - bluish grey*/
+/* #abb8bb - smoke - bluish grey*/
 /* #c4d8d1 - duck egg - pastel green */
 /* #fbf0e3 - blush - very light beige */
 /* #e9d3cb - coral - light pink */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Josefin+Slab:wght@600&family=Merriweather&family=Playfair+Display+SC:wght@400;900&display=swap');
+
+/* font-family: 'Cormorant Garamond', serif; ---PRODUCT CARD BRAND -- font-weight: 600
+font-family: 'Josefin Slab', serif;         --  PRODUCT INFO, PRODUCT CARD NAME
+font-family: 'Merriweather', serif;         --  PRODUCT NAME
+font-family: 'Playfair Display SC', serif;  --  LOGO  -- font-weight: 400, 900  */
