@@ -3,24 +3,24 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import '../css/TopNav.css';
-// import {Link} from 'react-router-dom';
 
 
-const TopNav = ({loggedIn, createList, handleLogout, renderProfilePage}) => {
+
+const TopNav = ({loggedIn, handleLogout, renderProfilePage}) => {
 
     return(
-        <Navbar bg="light" variant="light">
-            <Navbar.Brand href="/">SplashGlam</Navbar.Brand>
+        <Navbar className="topnav" variant="light">
+            <Navbar.Brand href="/"><h3 className="brand_text">SplashGlam</h3></Navbar.Brand>
 
                 {loggedIn ?
-                    <Nav>
-                        <Button variant="outline-primary" onClick={() => renderProfilePage()}><Nav.Link href="/profile">Profile</Nav.Link></Button>
-                        <Button variant="outline-danger" onClick={() => handleLogout()}>Logout</Button>
+                    <Nav className="topnav_btn_div">
+                        <Button className="profile_btn" variant="outline-info" onClick={() => renderProfilePage()} size="sm"><Nav.Link href="/profile">Profile</Nav.Link></Button>
+                        <Button className="profile_btn" variant="outline-info" onClick={() => handleLogout()} size="sm"><Nav.Link href="/login">Logout</Nav.Link></Button>
                     </Nav>
                      :
-                    <Nav>
-                    <Button variant="outline-primary"><Nav.Link href="/login">Log In</Nav.Link></Button>
-                    <Button variant="outline-primary"><Nav.Link href="/signup">Sign Up</Nav.Link></Button>
+                    <Nav className="topnav_btn_div">
+                    <Button className="profile_btn" variant="outline-info" size="sm"><Nav.Link href="/login">Log In</Nav.Link></Button>
+                    <Button className="profile_btn" variant="outline-info" size="sm"><Nav.Link href="/signup">Sign Up</Nav.Link></Button>
                     </Nav>
 
 

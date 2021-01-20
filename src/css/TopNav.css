@@ -1,0 +1,17 @@
+.topnav{
+    background: #fdeef3;
+    justify-content: space-between;
+}
+
+.brand_text{
+    font-family: 'Playfair Display SC', serif;
+    font-weight: 900;
+    font-size: 32px;
+    padding: 0px;
+}
+
+.profile_btn{
+   margin-right: 8px;
+   border-radius: 15px;
+   
+}

@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   renderProfilePage = () => {
-    return <Profile user={this.state.user} handleDelete={this.handleDelete}/>
+    return <Profile user={this.state.user} handleDelete={this.handleDelete} handleSubmit={this.handleUpdate}/>
   }
 
   renderForm = (routerProps) => {
@@ -87,12 +87,18 @@ class App extends React.Component {
   }
 
   handleUpdate = (info) => {
+  
     let data = {
       username: info.username,
-      password: info.password
+      password: info.password,
+      age: parseInt(info.age)
     }
+    
     this.handleAuth(data, `http://localhost:3000/users/${info.id}`, "PATCH")
+    // debugger
   }
+
+
 
   handleDelete = () => {
 
@@ -118,7 +124,7 @@ class App extends React.Component {
   handleError = (data) => {
     alert(`${data.error}`)
     if (data.error === "That username is already been used. Please specify another username."){
-      this.props.history.push("/editprofile")
+      this.props.history.push("/profile")
     } else {
     this.props.history.push(
       data.error === "Invalid credentials, please try again." ? '/login' : '/signup')
@@ -126,6 +132,7 @@ class App extends React.Component {
   }
 
   handleAuth = (data, resource, method) => {
+
     fetch(resource, {
       method:  method,
       headers: {"Content-Type": "application/json"},
@@ -133,21 +140,23 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      this.setState({user: data.user, token: data.token} ,() => {
-        this.props.history.push('/products')
-      })
 
       if (data.error) {
         this.handleError(data) }
-      else {
-        this.setState({user: data.user} ,() => {
+      else if (method !== "PATCH"){
+        this.setState({user: data.user , token: data.token} ,() => {
           if (data.token){
             localStorage.setItem('jwt', data.token)
             this.props.history.push('/products')
           }  else  {
             alert("Profile Succesfully Updated!")
-            this.props.history.push('/products')}
-      })}
+            this.props.history.push('/profile')
+          }
+      })} else {
+        this.setState({user: data}, () => {
+          this.props.history.push('/profile')
+        })
+      }
     })
   }
 
@@ -156,12 +165,12 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage} createList={this.createList}/>
+        <TopNav loggedIn={!!this.state.user} handleLogout={this.handleLogout} renderProfilePage={this.renderProfilePage}/>
 
           <Switch>
 
             <Route exact path="/login" >
-              {!!localStorage.getItem('jwt') ? <Redirect to="/" /> : <Route path="/login" exact component={this.renderForm}/>}
+              {!!localStorage.getItem('jwt') ? <Redirect to="/products" /> : <Route path="/login" exact component={this.renderForm}/>}
             </Route>
 
             <Route exact path="/signup" >
@@ -169,7 +178,7 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/products" >
-              {!!localStorage.getItem('jwt') ?   <Route path="/products" render={this.renderProductList}/> : <Redirect to="/" />  }
+              {!!localStorage.getItem('jwt') ?   <Route exact path="/products" render={this.renderProductList}/> : <Redirect to="/" />  }
             </Route>
 
             <Route exact path="/products/:id" >
@@ -177,12 +186,11 @@ class App extends React.Component {
             </Route>
 
             <Route exact path="/">
-
               {!!localStorage.getItem('jwt') ? <Redirect to="/login" /> :<Route path="/" render={this.renderHome}/> }
             </Route>
 
             <Route exact path="/profile" >
-              {!!localStorage.getItem('jwt') ? <Route path="/profile" render={this.renderProfilePage}/> : <Redirect to="/login"/> }
+              {!!localStorage.getItem('jwt') ? <Route exact path="/profile" render={this.renderProfilePage}/> : <Redirect to="/login"/> }
             </Route>
 
             <Route component={NotFound}/>

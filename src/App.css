@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Josefin+Slab:wght@600&family=Merriweather&family=Playfair+Display+SC:wght@400;900&display=swap');
 .App {
   text-align: center;
+  height: 100vh;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 
@@ -10,7 +13,6 @@
 /* #fbf0e3 - blush - very light beige */
 /* #e9d3cb - coral - light pink */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Josefin+Slab:wght@600&family=Merriweather&family=Playfair+Display+SC:wght@400;900&display=swap');
 
 /* font-family: 'Cormorant Garamond', serif; ---PRODUCT CARD BRAND -- font-weight: 600
 font-family: 'Josefin Slab', serif;         --  PRODUCT INFO, PRODUCT CARD NAME
