@@ -9,8 +9,6 @@ import ProductList from './components/ProductList';
 import Profile from './components/Profile';
 import Product from './components/Product';
 import NotFound from './components/NotFound';
-// import ModalForm from './components/ModalForm';
-// import Alert from 'react-bootstrap/Alert'
 
 class App extends React.Component {
 
@@ -48,7 +46,6 @@ class App extends React.Component {
   }
 
   renderProfilePage = () => {
-
     return <Profile user={this.state.user} handleDelete={this.handleDelete}/>
   }
 
@@ -104,7 +101,10 @@ class App extends React.Component {
       headers: {"Content-Type": "application/json"}
     })
     .then(res => res.json())
-    .then(() => this.handleLogout())
+    .then(() => {
+      alert("Account deleted.")
+      this.handleLogout()
+    })
   }
 
   handleLogout = () => {
