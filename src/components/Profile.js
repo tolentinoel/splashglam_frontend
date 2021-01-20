@@ -6,7 +6,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-// import FormRender from './components/FormRender';
+import FormRender from "./FormRender";
 import "../css/Profile.css";
 
 class Profile extends Component {
@@ -42,7 +42,9 @@ class Profile extends Component {
           <Dropdown.Item
             key={list_obj.id}
             eventKey={list_obj.id}
-            onClick={()=> this.changeDropValue(list_obj)}>
+            onClick={()=> this.changeDropValue(list_obj)}
+            className="dropdown-item"
+            >
             {list_obj.title}
           </Dropdown.Item>
         ))
@@ -75,35 +77,39 @@ class Profile extends Component {
   }
 
   filteredList = () => {
-    
+
     let selected = this.state.listCollection.filter(list_obj => {
       return list_obj.id === this.state.selectedList
     })
     return (
       <div className= 'mini_card_div'>
           <h3>{selected[0].title}</h3>
+          <div className="miniCard">
             {selected[0].products.map(prd => (
-              <div className="miniCard">
-                <Card style={{ width: "15rem" }} className="mini" key={prd.id}>
+                <Card style={{ width: "15rem" }} className="mini" >
                   <Link to={"/products/" + prd.id}>
                     <Card.Img variant="top" src={prd.image} alt=""/>
                   </Link>
-                  <ListGroup className="list-group-flush">
-                    <Card.Text className="prd_brand" key={prd.id}>
+                  <ListGroup className="list-group-flush mini" key={prd.id.toString()}>
+                    <Card.Text className="prd_brand" >
                     {prd.brand}
                     </Card.Text>
                   </ListGroup>
-                  <Card.Body className="list-group-flush">
+                  <Card.Body className="list-group-flush mini">
                     <Link to={"/products/" + prd.id}>
                       <h6 className="prd_name">{prd.name}</h6>
                     </Link>
                   </Card.Body>
                 </Card>
-              </div>
             ))
           }
+          </div>
       </div>
     )
+  }
+
+  closeForm = () => {
+    this.setState({update:false})
   }
 
   profileContent = () => {
@@ -111,8 +117,7 @@ class Profile extends Component {
       case this.state.update:
         return(
           <div className="profile_content">
-            <h1>UPDATE PROFILE</h1>
-
+            <FormRender name={"Update"} currentUser={this.props.user} handleSubmit={this.props.handleSubmit} closeForm={this.closeForm}/>
           </div>
         )
       case this.state.viewLists:
@@ -124,50 +129,53 @@ class Profile extends Component {
         default:
           return (
             <div className="profile_content">
-              <h1>Hey {this.props.user.username}!</h1>
-              <h5>Skin Type: {this.props.user.skin_type}</h5>
-              <h5>Name: {this.props.user.name}</h5>
+              <h1 id="greeting">Hey {this.props.user.username}!</h1>
+              <h5 id="greeting2">Skin Type: {this.props.user.skin_type}</h5>
+              <h5 id="greeting3">Name: {this.props.user.name}</h5>
             </div>
           )
-    }
-
+      }
   }
 
   render() {
 
     return (
-      <div className="profile_div">
-        <div className="profile_sideNav">
-          <ButtonGroup vertical>
-            <Button key="button1" variant="outline-success" onClick={()=> this.updateProfile(this.props.user)}>
+      <>
+      <div className="profile_sideNav">
+          <ButtonGroup vertical className="btn_grp" >
+            <Button key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
               Edit Profile
             </Button>
 
             <DropdownButton
               key="dropdown"
-              variant="outline-success"
+              variant="outline-info"
               as={ButtonGroup}
               title={this.state.dropDownTitle}
-              id="bg-vertical-dropdown-1"
+              id="bg-vertical-dropdown-1-profile"
             >
               {this.mapUserList()}
             </DropdownButton>
 
-            <Button key="button3" variant="outline-success" href="/products">
+            <Button key="button3" variant="outline-info" href="/products" id="back_to_prd">
               Back to Products
             </Button>
-            <Button
+            
+          </ButtonGroup>
+          <Button
               key="button4"
               variant="outline-danger"
               onClick={() => this.props.handleDelete()}
             >
               Delete Account
             </Button>
-          </ButtonGroup>
         </div>
+      <div className="profile_div">
+
         {this.profileContent()}
 
       </div>
+      </>
     );
   }
 }

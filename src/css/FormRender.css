@@ -1,0 +1,15 @@
+.form_render{
+    width: 345px;
+}
+
+.login_signup{
+    width: 40%;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+}
+
+.login_signup form{
+    display: inline-block;
+}
