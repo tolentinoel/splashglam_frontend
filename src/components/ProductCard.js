@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/button";
 import { Link } from "react-router-dom";
 import ModalForm from "./ModalForm";
+import Alert from 'react-bootstrap/Alert'
+// import Toast from "react-bootstrap/Toast";
 import "../css/ProductCard.css";
 
 class ProductCard extends Component {
@@ -17,12 +19,14 @@ class ProductCard extends Component {
   };
 
   updateUserLists = (data) => {
-    this.setState({userLists: data.lists})
-  }
+    this.setState({ userLists: data.lists });
+  };
 
-  
-
-  renderModalForm = () => this.setState({ modalForm: true });
+  renderModalForm = (p) =>
+    this.setState({
+      modalForm: true,
+      product: p
+    });
 
   openModal = (p, p_id) =>
     this.setState({
@@ -46,7 +50,7 @@ class ProductCard extends Component {
       },
       () => {
         this.openModal(this.state.product, this.state.productId);
-        this.renderModalForm();
+        this.renderModalForm(this.state.product);
       }
     );
   };
@@ -55,7 +59,7 @@ class ProductCard extends Component {
     this.setState(
       (prevState) => {
         return {
-          newList: { ...prevState.newList, title: listTitle }
+          newList: { ...prevState.newList, title: listTitle },
         };
       },
       () => {
@@ -83,10 +87,11 @@ class ProductCard extends Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        this.setState(prevState => {
-            return{
-              userLists: [...prevState.userLists, data]
-            }
+        this.setState(
+          (prevState) => {
+            return {
+              userLists: [...prevState.userLists, data],
+            };
           },
           () => {
             fetch("http://localhost:3000/list_products", {
@@ -97,24 +102,56 @@ class ProductCard extends Component {
               },
               body: JSON.stringify({
                 product_id: productId,
-                list_id: this.state.userLists[this.state.userLists.length - 1].id,
+                list_id: this.state.userLists[this.state.userLists.length - 1]
+                  .id,
               }),
             })
               .then((resp) => resp.json())
               .then((data) => {
-                debugger
-                // this.setState(prevState => {
-                //   return{
-                //     userLists: [...prevState.userLists, data]
-                //   }
-                // })
-                console.log("AFTER POSTING TO LIST", data);
+                this.renderToast(data);
+                // console.log("AFTER POSTING TO LIST", data);
               });
-            }
+          }
         );
       });
   };
 
+  postToExistingList = (list_obj) => {
+    this.closeModal();
+    let productId = this.state.productId
+    let listId = list_obj.id
+
+    fetch("http://localhost:3000/list_products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        product_id: productId,
+        list_id: listId
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        // debugger
+        this.renderToast(data);
+        console.log("AFTER POSTING TO LIST", data);
+      });
+  };
+
+  renderToast = (data) => <Alert key={data.id} variant="success">Nicely done! Product added to list!</Alert>
+    // return (
+    //   <Toast>
+    //     <Toast.Header>
+    //       <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="logo" />
+    //       <strong className="mr-auto">SplashGlam</strong>
+    //       <small>Bookmark</small>
+    //     </Toast.Header>
+    //     <Toast.Body>Added to list!</Toast.Body>
+    //   </Toast>
+    // );
+ 
   render() {
     let p_id = this.props.product.id;
     let product = this.props.product;
@@ -150,6 +187,7 @@ class ProductCard extends Component {
               userLists={this.state.userLists}
               handleTitle={this.handleTitle}
               updateUserLists={this.updateUserLists}
+              postToExistingList={this.postToExistingList}
             />
           ) : null}
         </div>

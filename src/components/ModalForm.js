@@ -4,12 +4,14 @@ import Button from "react-bootstrap/button";
 import Form from "react-bootstrap/Form";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-// import Alert from "react-bootstrap/Alert";
+// import Alert from 'react-bootstrap/Alert';
 
 class ModalForm extends Component {
 
   state = {
-    title: ""
+    title: "",
+    dropDownTitle: "Select from your lists",
+    pickedList: null
   }
 
   componentDidMount() {
@@ -31,37 +33,56 @@ class ModalForm extends Component {
   handleChange = (e) => this.setState({ title: e.target.value });
 
 
-  handleClick = (list) => {
-    fetch(`http://localhost:3000/lists/${list.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        products: [...list.list_products, this.props.product],
-      }),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        debugger;
-        console.log("FROM HANDLECLICK", data);
-        // <Alert variant="info">Nicely Done! </Alert>
-      });
+  handleClick = (data) => {
+    //   debugger
+    fetch(`http://localhost:3000/list_products`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        body: JSON.stringify({
+            list_id: data.id,
+            product_id: this.props.product.id
+        }),
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+        // debugger
+        console.log("ADDED PRODUCT TO EXISTING LIST", data)
+        // return <Alert variant="info">Nicely Done! Product added to list!</Alert>
+      })
   };
 
+  changeValue= (text) => {
+    this.setState({dropDownTitle: text})
+  }
+
+  selectedList = (list_obj) => {
+    this.setState({pickedList: list_obj})
+  }
+
   mapList = () => {
-    // console.log(this.props.user.lists)
+    
     return this.props.userLists.map((list_obj) => (
       <Dropdown.Item
         key={list_obj.id}
         eventKey={list_obj.id}
-        onClick={() => this.handleClick(list_obj)}
+        onClick={() => {
+            // this.handleClick(list_obj)
+            this.changeValue(list_obj.title)
+            this.selectedList(list_obj)
+        }}
       >
         {list_obj.title}
       </Dropdown.Item>
     ));
   };
+
+  checkInput =() => {
+    // debugger
+    this.state.title === "" ? this.props.postToExistingList(this.state.pickedList) : this.props.handleTitle(this.state.title)
+  }
 
   render() {
 
@@ -96,7 +117,7 @@ class ModalForm extends Component {
                 <DropdownButton
                   key="dropdown"
                   variant="outline-info"
-                  title="Lists"
+                  title={this.state.dropDownTitle}
                   id="bg-vertical-dropdown-1"
                 >
                   {this.props.userLists.length !== 0 ? (
@@ -113,7 +134,7 @@ class ModalForm extends Component {
               <Button
                 variant="outline-primary"
                 type="submit"
-                onClick={() => {this.props.handleTitle(this.state.title)}}
+                onClick={() => {this.checkInput()}}
               >
                 Submit
               </Button>

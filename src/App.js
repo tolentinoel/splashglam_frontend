@@ -9,7 +9,7 @@ import ProductList from './components/ProductList';
 import Profile from './components/Profile';
 import Product from './components/Product';
 import NotFound from './components/NotFound';
-import ModalForm from './components/ModalForm';
+// import ModalForm from './components/ModalForm';
 // import Alert from 'react-bootstrap/Alert'
 
 class App extends React.Component {
@@ -17,7 +17,7 @@ class App extends React.Component {
   state= {
     user: "",
     token: ""
-    
+
   }
 
   componentDidMount() {
