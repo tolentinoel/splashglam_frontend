@@ -159,7 +159,7 @@ class ProductCard extends Component {
               <Link to={"/products/" + p_id}>
                 <h6 className="p_card_name">{this.props.product.name}</h6>
               </Link>
-              <Button onClick={() => this.createList(product, p_id)}>
+              <Button className="bookmark_btn" variant= "info" onClick={() => this.createList(product, p_id)}>
                 Bookmark
               </Button>
             </Card.Body>
