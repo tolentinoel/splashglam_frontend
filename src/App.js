@@ -38,7 +38,7 @@ class App extends React.Component {
   renderHome = () => <Home loggedIn={!!this.state.user} user={this.state.user} token={localStorage.getItem('jwt')} refresh={this.handleRefresh}/>
 
   renderProductPage = (r_props) => {
-  return <Product productId={r_props.match.params.id}/>
+  return <Product productId={r_props.match.params.id} user={this.state.user}/>
   }
 
   renderProductList = () => {
@@ -87,15 +87,13 @@ class App extends React.Component {
   }
 
   handleUpdate = (info) => {
-  
     let data = {
       username: info.username,
       password: info.password,
       age: parseInt(info.age)
     }
-    
+  
     this.handleAuth(data, `http://localhost:3000/users/${info.id}`, "PATCH")
-    // debugger
   }
 
 

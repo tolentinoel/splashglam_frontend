@@ -9,8 +9,18 @@
 
 .p_card_brand{
     color: rgb(20, 0, 12);
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Playfair Display SC', serif;
+    font-weight: 900;
 }
 
 .p_card_name{
     color: rgb(20, 0, 12);
+    
+}
+
+
+.bookmark_btn{
+    border-radius: 15px;
+    font-family: 'Josefin Slab', serif;
 }
