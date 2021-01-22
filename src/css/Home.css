@@ -1,0 +1,19 @@
+.home{
+    text-align: center;
+}
+
+.home_jumbotron{
+    display: inline-block;
+    width: 60%;
+}
+
+.home_jumbotron p{
+    font-size: 18px;
+}
+
+.about_header{
+    line-height: 6rem;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: 900;
+}
+

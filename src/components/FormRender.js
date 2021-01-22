@@ -66,7 +66,7 @@ class FormRender extends Component {
                   <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                 </Form.Group>
                 :
-                  <Form.Group className="form_render">
+                  <Form.Group className="form_render_update">
                     <Form.Label htmlFor="username">Username</Form.Label>
                     <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder={this.props.currentUser.username} />
                   </Form.Group>
@@ -79,7 +79,7 @@ class FormRender extends Component {
                   </Form.Group>
 
                   {this.props.name === "Update" ?
-                    <Form.Group className="form_render">
+                    <Form.Group className="form_render_update">
                       <Form.Label htmlFor="age" >Age</Form.Label>
                     <Form.Control type="number" name="age" value={this.state.age} min='1' max='100' onChange={this.handleChange} placeholder={this.props.currentUser.age}/>
                   </Form.Group> : null}

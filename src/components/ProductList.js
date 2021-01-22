@@ -32,13 +32,13 @@ class ProductList extends Component {
                         <Nav.Link href="/products">All</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/normal">Normal or Combination</Nav.Link>
+                        {/* <Nav.Link href="/normal">Normal or Combination</Nav.Link> */}
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/oily">Oily</Nav.Link>
+                        {/* <Nav.Link href="/oily">Oily</Nav.Link> */}
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link href="/dry">Dry</Nav.Link>
+                        {/* <Nav.Link href="/dry">Dry</Nav.Link> */}
                     </Nav.Item>
                 </Nav>
 

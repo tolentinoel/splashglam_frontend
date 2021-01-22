@@ -1,6 +1,6 @@
 .p_card_div{
     display: inline-block;
-    
+    margin: 8px;
 }
 
 .p_card{
@@ -17,6 +17,10 @@
 .p_card_name{
     color: rgb(20, 0, 12);
     
+}
+
+.card-body{
+    padding-top: 10px;
 }
 
 
