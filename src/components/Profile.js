@@ -35,6 +35,19 @@ class Profile extends Component {
     })
   }
 
+  // handleListDelete = () => {
+
+  //   fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+  //     method:  "DELETE",
+  //     headers: {"Content-Type": "application/json"}
+  //   })
+  //   .then(res => res.json())
+  //   .then(() => {
+  //     alert("Account deleted.")
+  //     this.handleLogout()
+  //   })
+  // }
+
   mapUserList = () => {
     if (this.props.user) {
       return this.props.user.lists.length !== 0 ? (
@@ -104,6 +117,13 @@ class Profile extends Component {
             ))
           }
           </div>
+          {/* <Button
+              key="delete_list"
+              variant="outline-warning"
+              onClick={this.handleListDelete}
+            >
+              Delete List
+          </Button> */}
       </div>
     )
   }
@@ -168,7 +188,7 @@ class Profile extends Component {
               onClick={() => this.props.handleDelete()}
             >
               Delete Account
-            </Button>
+          </Button>
         </div>
       <div className="profile_div">
 

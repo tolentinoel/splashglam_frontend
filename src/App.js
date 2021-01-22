@@ -99,13 +99,14 @@ class App extends React.Component {
 
 
   handleDelete = () => {
-
+  //  debugger
     fetch(`http://localhost:3000/users/${this.state.user.id}`, {
       method:  "DELETE",
       headers: {"Content-Type": "application/json"}
     })
     .then(res => res.json())
     .then(() => {
+      debugger
       alert("Account deleted.")
       this.handleLogout()
     })
