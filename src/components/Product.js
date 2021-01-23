@@ -75,6 +75,7 @@ class Product extends React.Component {
                     <h1 className="p_name">{this.state.product.name}</h1>
                     <h2 className="p_brand">{this.state.product.brand}</h2>
                     <p className="p_description">{this.state.product.description}</p>
+                    <p className="p_price">Current Market Price:{this.state.product.price}</p>
                 </div>
 
 

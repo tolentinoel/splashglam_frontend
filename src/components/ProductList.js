@@ -1,55 +1,130 @@
-import React, { Component } from 'react';
-import ProductCard from './ProductCard';
-import Nav from 'react-bootstrap/Nav';
+import React, { Component } from "react";
+import ProductCard from "./ProductCard";
+// import Nav from "react-bootstrap/Nav";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from 'react-bootstrap/Tab'
 import "../css/ProductList.css";
 
 class ProductList extends Component {
+  state = {
+    products: [],
+    oilyProducts: [],
+    normalProducts: [],
+    dryProducts: [],
+    key: "all"
+  };
 
-    state = {
-        products: [],
-        oilyProducts: [],
-        normalProducts: [],
-        dryProducts: [],
 
+  componentDidMount() {
+    fetch("http://localhost:3000/products")
+      .then((resp) => resp.json())
+      .then((data) => {
+          let dry = data.filter(prd => prd.tag.includes("dry"))
+          let oily = data.filter(prd => prd.tag.includes("oily"))
+          let normCombi = data.filter(prd => prd.tag.includes("normal"))
+          this.setState({
+              products: data,
+              oilyProducts: oily,
+              normalProducts: normCombi,
+              dryProducts: dry
+            });
+      });
+  }
+
+  mapProductData = (key) => {
+      
+    switch (this.state.key){
+        case "all":
+            return(
+                this.state.products.map(product => {
+                    return <ProductCard
+                        key={product.id}
+                        product={product}
+                        createList={this.props.createList}
+                        user={this.props.user}
+                    />
+                })
+            )
+        case "norm_combi":
+            return(
+                this.state.normalProducts.map(product => {
+                    return <ProductCard
+                        key={product.id}
+                        product={product}
+                        createList={this.props.createList}
+                        user={this.props.user}
+                    />
+                })
+            )
+        case "oily":
+            return(
+                this.state.oilyProducts.map(product => {
+                    return <ProductCard
+                        key={product.id}
+                        product={product}
+                        createList={this.props.createList}
+                        user={this.props.user}
+                    />
+                })
+            )
+        case "dry":
+            return(
+                this.state.dryProducts.map(product => {
+                    return <ProductCard
+                        key={product.id}
+                        product={product}
+                        createList={this.props.createList}
+                        user={this.props.user}
+                    />
+                })
+            )
+        default:
+            return (
+                this.state.products.map(product => {
+                    return <ProductCard
+                        key={product.id}
+                        product={product}
+                        createList={this.props.createList}
+                        user={this.props.user}
+                    />
+                })
+            )
     }
-// STATE FOR DIFFERENT PRODUCT TYPE, POLISH SCRAPED DATA AND RE_SEED DB
-// AFTER SEEDING, DO A FETCH OF EACH TYPE ON COMPONENTDIDMOUNT
+  }
 
-    componentDidMount(){
-       fetch('http://localhost:3000/products')
-        .then(resp => resp.json())
-        .then(data => {
-            // debugger
-            this.setState({products: data})
-        })
-    }
+  render() {
+    return (
+      <div className="product_list">
+        <Tabs
+          id="controlled-tab"
+          activeKey={this.state.key}
+          onSelect={(k) => this.setState({key : k})}
+        >
+          <Tab eventKey="all" title="All">
+            <h1>All Products</h1>
+            {this.mapProductData(this.state.key)}
+          </Tab>
+          <Tab eventKey="norm_combi" title="Normal/Combination">
+            <h1>For Normal/Combination skin</h1>
+            {this.mapProductData(this.state.key)}
+          </Tab>
+          <Tab eventKey="oily" title="Oily">
+            <h1>For Oily skin</h1>
+            {this.mapProductData(this.state.key)}
+          </Tab>
+          <Tab eventKey="dry" title="Dry">
+            <h1>For Dry skin</h1>
+            {this.mapProductData(this.state.key)}
+          </Tab>
+        </Tabs>
 
-    render() {
-        return (
-            <div className="product_list">
-                <Nav justify variant="tabs" defaultActiveKey="/home">
-                    <Nav.Item>
-                        <Nav.Link href="/products">All</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        {/* <Nav.Link href="/normal">Normal or Combination</Nav.Link> */}
-                    </Nav.Item>
-                    <Nav.Item>
-                        {/* <Nav.Link href="/oily">Oily</Nav.Link> */}
-                    </Nav.Item>
-                    <Nav.Item>
-                        {/* <Nav.Link href="/dry">Dry</Nav.Link> */}
-                    </Nav.Item>
-                </Nav>
+        {/* DO CONDITIONAL RENDERING ON h1, MIGHT NEED TO CONTROL IT USING STATE */}
 
-                {/* DO CONDITIONAL RENDERING ON h1, MIGHT NEED TO CONTROL IT USING STATE */}
-
-                <h1>All Products</h1>
-                {this.state.products.map(product => <ProductCard key={product.id} product={product} createList={this.props.createList} user={this.props.user}/>)}
-
-            </div>
-        );
-    }
+  
+        
+      </div>
+    );
+  }
 }
 
 export default ProductList;

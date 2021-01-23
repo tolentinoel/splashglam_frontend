@@ -17,3 +17,21 @@
     font-weight: 900;
 }
 
+.chunky_footer{
+    display: flex;
+    flex-direction: row;
+}
+
+#product1 {
+    width: 325px;
+    height: 420px;
+}
+
+#product2{
+    width: 325px;
+    height: 420px;
+}
+
+#product3{
+    width: 320px;
+}
