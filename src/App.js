@@ -11,11 +11,12 @@ import Product from "./components/Product";
 import NotFound from "./components/NotFound";
 
 
+
 class App extends React.Component {
   state = {
     user: "",
-    token: "",
-    darkMode: false
+    token: ""
+  
   };
 
   componentDidMount() {
@@ -96,7 +97,9 @@ class App extends React.Component {
   };
 
   handleRefresh = (data) => {
-    this.setState({ user: data.user, token: data.token, darkMode: data.darkMode });
+    this.setState({ user: data.user, token: data.token, darkMode: data.darkMode }, () => {
+      localStorage.getItem('theme')
+    });
   };
 
   handleSignup = (info) => {
@@ -129,14 +132,14 @@ class App extends React.Component {
   };
 
   handleDelete = () => {
-   
+
     fetch(`http://localhost:3000/users/${this.state.user.id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then(() => {
-        
+
         alert("Account deleted.");
         this.handleLogout();
       });
@@ -193,21 +196,30 @@ class App extends React.Component {
       });
   };
 
-  toggleDark = () => {
-    this.state.darkMode ? this.setState({ darkMode: false }) : this.setState({ darkMode: true })
-  }
+  // toggleDark = () => {
+  //   this.state.darkMode ?
+  //     this.setState({ darkMode: false }, () => {
+  //       console.log("LET THERE BE LIGHT")
+
+  //     })
+  //     :
+  //     this.setState({ darkMode: true }, () => {
+  //       console.log("BROWNOUT AGAIN")
+  //     })
+  // }
 
   render() {
-   
+
     return (
-      <div className={this.state.darkMode ? "darkApp" : "App"} >
+      <div className="App" >
         <TopNav
           loggedIn={!!this.state.user}
           handleLogout={this.handleLogout}
           renderProfilePage={this.renderProfilePage}
           toggleDark = {this.toggleDark}
+          darkMode = {this.state.darkMode}
         />
-
+        
         <Switch>
           <Route exact path="/login">
             {!!localStorage.getItem("jwt") ? (
@@ -219,9 +231,9 @@ class App extends React.Component {
 
           <Route exact path="/signup">
             {!!localStorage.getItem("jwt") ? (
-              <Route path="/signup" exact component={this.renderForm} />
+              <Redirect to="/login" />
               ) : (
-              <Redirect to="/" />
+              <Route path="/signup" exact component={this.renderForm} />
             )}
           </Route>
 
@@ -247,9 +259,9 @@ class App extends React.Component {
 
           <Route exact path="/">
             {!!localStorage.getItem("jwt") ? (
-              <Redirect to="/login" />
-            ) : (
-              <Route path="/" render={this.renderHome} />
+                <Redirect to="/login" />
+              ) : (
+                <Route path="/" render={this.renderHome} />
             )}
           </Route>
 

@@ -3,6 +3,7 @@
 }
 
 .darkHome{
+    height: 100vh;
     text-align: center;
     background-color: rgb(27, 24, 34);
     color: #cbb575;
@@ -11,7 +12,8 @@
 .home_jumbotron{
     display: inline-block;
     width: 60%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    padding-bottom: 20px;
 }
 
 .home_jumbotron p{
