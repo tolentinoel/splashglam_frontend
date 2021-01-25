@@ -1,4 +1,10 @@
 .product_list{
     padding-left: 40px;
     padding-right: 40px;
+    overflow: hidden;
+}
+
+.tab-content{
+    overflow-y: scroll;
+    height: 745px;
 }

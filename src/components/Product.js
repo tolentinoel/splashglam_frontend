@@ -11,7 +11,8 @@ class Product extends React.Component {
         product: "",
         reviewContent: "",
         id: this.props.productId,
-        productReviews: []
+        productReviews: [],
+        darkProduct: this.props.darkMode
     }
 
     componentDidMount() {
@@ -66,27 +67,26 @@ class Product extends React.Component {
 
     render() {
         return (
-            <div className="product">
-                <Button className ="back_to_prd" variant="outline-primary" href='/products'>Back to Products</Button>
+            <div className={this.state.darkProduct ? "darkProduct" : "product"}>
+                    <Button className ="back_to_prd" variant="info" href='/products'>Back to Products</Button>
+                <div className="product_section">
+                    <img src={this.state.product.image_url} alt="skincare product" className="p_photo"/>
 
-                <img src={this.state.product.image_url} alt="skincare product" className="p_photo"/>
-
-                <div className = "info_div">
-                    <h1 className="p_name">{this.state.product.name}</h1>
-                    <h2 className="p_brand">{this.state.product.brand}</h2>
-                    <p className="p_description">{this.state.product.description}</p>
-                    <p className="p_price">Current Market Price:{this.state.product.price}</p>
+                    <div className = "info_div">
+                        <h1 className="p_name">{this.state.product.name}</h1>
+                        <h2 className="p_brand">{this.state.product.brand}</h2>
+                        <p className="p_description">{this.state.product.description}</p>
+                        <p className="p_price">Current Market Price: <b>{this.state.product.price}</b></p>
+                        <Form className="text_area_div">
+                        <Form.Group className="text_area">
+                            <p>Share you thoughts with other users! </p>
+                            <Form.Label htmlFor="review">Review this product</Form.Label>
+                            <Form.Control as="textarea" value={this.state.reviewContent} onChange={this.obtainReview} rows={3} />
+                        </Form.Group>
+                        <Button className="review_btn" variant="warning" type="submit" onClick={this.addReview}>Submit</Button>
+                    </Form>
+                    </div>
                 </div>
-
-
-                <Form className="text_area_div">
-                    <Form.Group className="text_area">
-                        <p>Share you thoughts with other users! </p>
-                        <Form.Label htmlFor="review">Review this product</Form.Label>
-                        <Form.Control as="textarea" value={this.state.reviewContent} onChange={this.obtainReview} rows={3} />
-                    </Form.Group>
-                    <Button className="review_btn" variant="outline-warning" type="submit" onClick={this.addReview}>Submit</Button>
-                </Form>
 
                 <div className="review_div">
                     <h3 id="review_header">Product Reviews:</h3>
@@ -99,7 +99,6 @@ class Product extends React.Component {
                             </div>
                             <div id="user_info">
                                 <p>--<b>{rvw.user}</b>, {rvw.user_age} |  Skin Type: {rvw.user_skin_type}</p>
-
                             </div>
                         </div>
                         ) :

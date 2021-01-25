@@ -3,6 +3,28 @@
     text-align: start;
     padding: 30px 45px 25px 75px;
 }
+
+.darkProduct{
+    /* height: 100vh; */
+    text-align: start;
+    padding: 30px 45px 25px 75px;
+    background: rgb(27, 24, 34);
+    color: #cbb575;
+}
+
+.darkProduct button{
+    background-color: #8f59f2;
+}
+
+.darkProduct .back_to_prd{
+    background-color: #8f59f2;
+}
+
+.product_section{
+    display: flex;
+    flex-direction: row;
+}
+
 .info_div{
     width: 60%;
     display: inline-block;
@@ -11,7 +33,7 @@
 }
 
 .p_name{
-    width: 75%;
+    width: 100%;
 }
 
 .p_brand{
@@ -19,19 +41,19 @@
     display: inline-block;
 }
 .p_photo{
-    margin-top: 40px;
-    width: 388px;
+    margin-top: 20px;
+    /* margin-right: 40px; */
+    width: 35%;
     float: left;
 }
 .p_description{
     display: inline-block;
-    width: 70%;
-    font-size: 17px;
+    width: 100%;
+    font-size: 18px;
 }
 
 .back_to_prd{
-    margin-left: 60px;
-    margin-top: 20px;
+    border-radius: 20px;
 }
 
 .text_area{
@@ -41,7 +63,7 @@
 .text_area_div{
     display: flex;
     flex-direction: column;
-    padding-left: 60px;
+    
 }
 
 .review_btn{
@@ -55,6 +77,12 @@
 
 .review_div{
     width: 80%;
+}
+
+.darkReview_div{
+    width: 80%;
+    background-color: rgb(27, 24, 34);
+    color: #cbb575;
 }
 
 #review_header{

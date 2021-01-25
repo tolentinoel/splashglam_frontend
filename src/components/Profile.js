@@ -16,7 +16,8 @@ class Profile extends Component {
     viewLists: false,
     dropDownTitle: "Your Lists",
     listCollection: null,
-    selectedList: null
+    selectedList: null,
+    darkProfile: this.props.darkMode
   }
 
   componentDidMount() {
@@ -161,7 +162,7 @@ class Profile extends Component {
 
     return (
       <>
-      <div className="profile_sideNav">
+      <div className={this.props.darkMode ? "darkProfile_sideNav" : "profile_sideNav"}>
           <ButtonGroup vertical className="btn_grp" >
             <Button key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
               Edit Profile
@@ -190,8 +191,11 @@ class Profile extends Component {
               Delete Account
           </Button>
         </div>
-      <div className="profile_div">
 
+
+        {/* ------------------- PROFILE PAGE CONTENT --------------- */}
+      <div className={this.props.darkMode ? "darkProfile_div" : "profile_div"}>
+        
         {this.profileContent()}
 
       </div>
