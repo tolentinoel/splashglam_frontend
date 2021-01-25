@@ -9,14 +9,14 @@ import ProductList from "./components/ProductList";
 import Profile from "./components/Profile";
 import Product from "./components/Product";
 import NotFound from "./components/NotFound";
-import DarkMode from "./components/DarkMode";
+
 
 
 class App extends React.Component {
   state = {
     user: "",
-    token: "",
-    darkMode: false
+    token: ""
+  
   };
 
   componentDidMount() {
@@ -196,25 +196,22 @@ class App extends React.Component {
       });
   };
 
-  toggleDark = () => {
+  // toggleDark = () => {
+  //   this.state.darkMode ?
+  //     this.setState({ darkMode: false }, () => {
+  //       console.log("LET THERE BE LIGHT")
 
-    this.state.darkMode ?
-      this.setState({ darkMode: false }, () => {
-        console.log("LET THERE BE LIGHT")
-
-      })
-      :
-      this.setState({ darkMode: true }, () => {
-        console.log("BROWNOUT AGAIN")
-      })
-
-
-  }
+  //     })
+  //     :
+  //     this.setState({ darkMode: true }, () => {
+  //       console.log("BROWNOUT AGAIN")
+  //     })
+  // }
 
   render() {
 
     return (
-      <div className={this.state.darkMode ? "darkApp" : "App"} >
+      <div className="App" >
         <TopNav
           loggedIn={!!this.state.user}
           handleLogout={this.handleLogout}
@@ -222,7 +219,7 @@ class App extends React.Component {
           toggleDark = {this.toggleDark}
           darkMode = {this.state.darkMode}
         />
-        <DarkMode />
+        
         <Switch>
           <Route exact path="/login">
             {!!localStorage.getItem("jwt") ? (
