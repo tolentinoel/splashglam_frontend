@@ -11,6 +11,7 @@ const TopNav = ({loggedIn, handleLogout, renderProfilePage, toggleDark}) => {
     return(
         <Navbar className="topnav" variant="light">
             <Navbar.Brand href="/"><h3 className="brand_text">SplashGlam</h3></Navbar.Brand>
+            
             <Button className="toggle" variant="outline-dark" onClick={() => toggleDark()} size="sm">Toggle theme</Button>
                 {/* <label>
                     <input type="checkbox"/>

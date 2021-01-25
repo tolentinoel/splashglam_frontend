@@ -67,7 +67,7 @@ class Product extends React.Component {
 
     render() {
         return (
-            <div className={this.state.darkProduct ? "darkProduct" : "product"}>
+            <div className={this.props.darkMode ? "darkProduct" : "product"}>
                     <Button className ="back_to_prd" variant="info" href='/products'>Back to Products</Button>
                 <div className="product_section">
                     <img src={this.state.product.image_url} alt="skincare product" className="p_photo"/>
@@ -98,7 +98,7 @@ class Product extends React.Component {
                                 <p>{rvw.content}</p>
                             </div>
                             <div id="user_info">
-                                <p>--<b>{rvw.user}</b>, {rvw.user_age} |  Skin Type: {rvw.user_skin_type}</p>
+                                <p>-- <b>{rvw.user}</b>, {rvw.user_age} |  Skin Type: {rvw.user_skin_type}</p>
                             </div>
                         </div>
                         ) :

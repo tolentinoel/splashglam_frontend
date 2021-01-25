@@ -30,8 +30,10 @@ class Profile extends Component {
     })
     .then(res => res.json())
     .then(data => {
+     
         this.setState({
-           listCollection: data
+            
+            listCollection: data
         })
     })
   }
@@ -159,10 +161,10 @@ class Profile extends Component {
   }
 
   render() {
-
+    
     return (
-      <>
-      <div className={this.props.darkMode ? "darkProfile_sideNav" : "profile_sideNav"}>
+      <div>
+        <div className={this.props.darkMode ? "darkProfile_sideNav" : "profile_sideNav"}>
           <ButtonGroup vertical className="btn_grp" >
             <Button key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
               Edit Profile
@@ -194,12 +196,12 @@ class Profile extends Component {
 
 
         {/* ------------------- PROFILE PAGE CONTENT --------------- */}
-      <div className={this.props.darkMode ? "darkProfile_div" : "profile_div"}>
-        
-        {this.profileContent()}
+        <div className={this.props.darkMode ? "darkProfile_div" : "profile_div"}>
+          
+          {this.profileContent()}
 
+        </div>
       </div>
-      </>
     );
   }
 }

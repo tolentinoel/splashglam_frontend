@@ -1,14 +1,16 @@
 .product{
+    overflow-y: scroll;
     height: 100vh;
     text-align: start;
     padding: 30px 45px 25px 75px;
 }
 
 .darkProduct{
-    /* height: 100vh; */
+    overflow-y: scroll;
+    height: 105vh;
     text-align: start;
     padding: 30px 45px 25px 75px;
-    background: rgb(27, 24, 34);
+    background-color: rgb(27, 24, 34);
     color: #cbb575;
 }
 
@@ -71,19 +73,21 @@
 }
 
 .rvw{
+    display: flex;
+    flex-direction: row;
     line-height: 1rem;
     padding-left: 15px;
 }
 
 .review_div{
-    width: 80%;
+    width: 85%;
 }
 
-.darkReview_div{
-    width: 80%;
-    background-color: rgb(27, 24, 34);
-    color: #cbb575;
+#content{
+    width: 75%;
+    padding-top: 10px;
 }
+
 
 #review_header{
     border-bottom-style: ridge;
@@ -91,4 +95,13 @@
     border-bottom-width: thin;
     padding-left: 15px;
     margin-top: 28px;
+    margin-bottom: 10px;
+}
+
+#user_info{
+    padding-left: 30px;
+    border-left: solid;
+    border-left-width: thin;
+    border-left-color: #ffffff42;
+    padding-top: 15px;
 }

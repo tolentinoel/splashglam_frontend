@@ -13,7 +13,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className={this.props.darkMode ? "darkHome" : "home"}>
+            <div className={localStorage.theme === 'dark' ? "darkHome" : "home"}>
                 {this.props.user ?
 
                 <div className='home_jumbotron'>
