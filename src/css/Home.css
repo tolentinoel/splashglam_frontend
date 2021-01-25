@@ -2,9 +2,16 @@
     text-align: center;
 }
 
+.darkHome{
+    text-align: center;
+    background-color: rgb(27, 24, 34);
+    color: #cbb575;
+}
+
 .home_jumbotron{
     display: inline-block;
     width: 60%;
+    margin-bottom: 20px;
 }
 
 .home_jumbotron p{
@@ -17,3 +24,34 @@
     font-weight: 900;
 }
 
+.chunky_footer{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0;
+}
+
+#product1 {
+    width: 20%;
+    height: 340px;
+}
+
+#product2{
+    width: 20%;
+    height: 340px;
+}
+
+#product3{
+    width: 20%;
+    height: 340px;
+}
+
+#product4{
+    width: 20%;
+    height: 340px;
+}
+
+#product5{
+    width: 20%;
+    height: 340px;
+}

@@ -1,10 +1,27 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Josefin+Slab:wght@600&family=Merriweather&family=Playfair+Display+SC:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+
 .App {
   text-align: center;
   height: 100vh;
   font-family: 'Cormorant Garamond', serif;
+  
 }
 
+.darkApp {
+  text-align: center;
+  height: 100vh;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: rgb(27, 24, 34);
+  color: #cbb575;
+}
+
+.darkApp h1{
+  font-family: 'Abril Fatface', cursive;
+}
 
 /* #f1bc68 - butterscotch yellow*/
 /* #5f9595 - emerald sea - blue green */
@@ -17,4 +34,5 @@
 /* font-family: 'Cormorant Garamond', serif; ---PRODUCT CARD BRAND -- font-weight: 600
 font-family: 'Josefin Slab', serif;         --  PRODUCT INFO, PRODUCT CARD NAME
 font-family: 'Merriweather', serif;         --  PRODUCT NAME
-font-family: 'Playfair Display SC', serif;  --  LOGO  -- font-weight: 400, 900  */
+font-family: 'Playfair Display SC', serif;  --  LOGO  -- font-weight: 400, 900 
+font-family: 'Abril Fatface', cursive; */

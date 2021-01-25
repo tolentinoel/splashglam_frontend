@@ -4,6 +4,14 @@
     justify-content: center;
 }
 
+.darkProfile_div{
+    /* /* min-height: 100%; */
+    display: flex;
+    justify-content: center; 
+    background-color: rgb(27, 24, 34);
+    color: #cbb575;
+}
+
 .profile_sideNav{
     /* display: inline-block; */
     float: left;
@@ -11,6 +19,15 @@
     height: 100vh;
     width: 300px;
     background: aliceblue;
+    padding-top: 50px;
+}
+
+.darkProfile_sideNav{
+    float: left;
+    align-items: center;
+    height: 100vh;
+    width: 300px;
+    background: #2b192e;
     padding-top: 50px;
 }
 
@@ -24,11 +41,12 @@
 #back_to_prd{
     padding-top: 30px;
 }
+
 .profile_content{
-    display: inline-block;
+    /* display: inline-block; */
     padding-top: 40px;
     height: 100%;
-    width: -webkit-fill-available;
+    width: 90%;
 }
 
 #greeting1{
@@ -53,14 +71,16 @@
 
 
 .mini_card_div{
-    width: -webkit-fill-available;
+    width: 100%;
+    height: 750px;
+    overflow-y: scroll;
+    /* display: inline-flex;*/
 }
 
 
 .miniCard{
     display: flex;
-    justify-content: center;
-    padding: 25px;
+    padding: 25px 25px 5px 35px;
     flex-wrap: wrap;
 }
 

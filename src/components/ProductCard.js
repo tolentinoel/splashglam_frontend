@@ -57,7 +57,7 @@ class ProductCard extends Component {
     this.setState(
       (prevState) => {
         return {
-          newList: { ...prevState.newList, title: listTitle },
+          newList: { ...prevState.newList, title: listTitle }
         };
       },
       () => {
@@ -159,8 +159,7 @@ class ProductCard extends Component {
               <Link to={"/products/" + p_id}>
                 <h6 className="p_card_name">{this.props.product.name}</h6>
               </Link>
-              <Button className="bookmark_btn" variant= "info" onClick={() => this.createList(product, p_id)}>
-                Bookmark
+              <Button className="bookmark_btn" onClick={() => this.createList(product, p_id)}>
               </Button>
             </Card.Body>
           </Card>
