@@ -24,8 +24,8 @@ class ModalForm extends Component {
     })
     .then(res => res.json())
     .then(data => {
+      // debugger
         this.props.updateUserLists(data)
-        // debugger
     })
 
 }

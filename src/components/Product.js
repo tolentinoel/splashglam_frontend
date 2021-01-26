@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import ModalForm from "./ModalForm";
 import '../css/Product.css';
 
 
@@ -12,7 +12,10 @@ class Product extends React.Component {
         reviewContent: "",
         id: this.props.productId,
         productReviews: [],
-        darkProduct: this.props.darkMode
+        isOpen: false,
+        modalForm: false,
+        newList: null,
+        userLists: []
     }
 
     componentDidMount() {
@@ -25,7 +28,6 @@ class Product extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
-            // debugger
             this.setState({
                product: data,
                productReviews: data.reviews
@@ -33,13 +35,12 @@ class Product extends React.Component {
         })
       }
 
-      obtainReview = (e) => {
-        //   debugger
+    obtainReview = (e) => {
         e.preventDefault()
-          this.setState({
-              reviewContent: e.target.value
-          })
-      }
+            this.setState({
+                reviewContent: e.target.value
+            })
+        }
 
     addReview = () => {
         let user = this.props.user
@@ -62,13 +63,131 @@ class Product extends React.Component {
         })
 
     }
+// ----------MODAL FORM ON PRODCUCT PAGE ---------
+    createList = (product, productId) => {
+        this.setState({
+            product: product,
+            productId: productId
+        }, () => {
+                this.openModal(product, productId);
+                this.renderModalForm(this.state.product)
+            })
+    }
+
+    updateUserLists = (data) => {
+        this.setState({ userLists: data.lists });
+    }
+
+    renderModalForm = (p) =>
+        this.setState({
+            modalForm: true,
+            product: p
+    })
+
+    openModal = (p, p_id) =>
+        this.setState({
+            isOpen: true,
+            product: p,
+            id: p_id
+    })
+
+    closeModal = () =>
+        this.setState({
+        isOpen: false,
+        modalForm: false
+    })
+// ------------ POST AND PATCH FOR LIST FROM MODAL FORM -------------
+    handleTitle = (listTitle) => {
+        this.setState(
+          (prevState) => {
+            return {
+              newList: { ...prevState.newList, title: listTitle }
+            };
+          },
+          () => {
+            this.postNewList();
+            this.closeModal();
+          }
+        );
+      };
+
+      postNewList = () => {
+        const listObject = this.state.newList;
+        let user = this.props.user.id;
+        let productId = this.state.id;
+  
+        fetch("http://localhost:3000/lists", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            title: listObject.title,
+            user_id: user,
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            this.setState(
+              (prevState) => {
+                return {
+                  userLists: [...prevState.userLists, data],
+                };
+              },
+              () => {
+                fetch("http://localhost:3000/list_products", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                  },
+                  body: JSON.stringify({
+                    product_id: productId,
+                    list_id: this.state.userLists[this.state.userLists.length - 1].id,
+                  }),
+                })
+                  .then((resp) => resp.json())
+                  .then((data) => {
+
+                    console.log(data)
+                    alert('Successfully added to list!')
+                  })
+              }
+            )
+          })
+      }
+
+      postToExistingList = (list_obj) => {
+        this.closeModal();
+        let productId = this.state.id
+        let listId = list_obj.id
+
+        fetch("http://localhost:3000/list_products", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            product_id: productId,
+            list_id: listId
+          }),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            console.log(data);
+            alert('Nice! Product added to list!')
+          });
+      };
 
 
 
     render() {
         return (
-            <div className={this.props.darkMode ? "darkProduct" : "product"}>
-                    <Button className ="back_to_prd" variant="info" href='/products'>Back to Products</Button>
+            <div className="product">
+                    <Button className ="back_to_prd" variant="info" href='/products'><p id='bk_to_prd_txt'>Back to Products</p></Button>
+                    <Button className="bookmark_onPage" onClick={() => this.createList(this.state.product, this.state.id)}><p id='bookmark_txt'>Bookmark</p></Button>
                 <div className="product_section">
                     <img src={this.state.product.image_url} alt="skincare product" className="p_photo"/>
 
@@ -87,7 +206,7 @@ class Product extends React.Component {
                     </Form>
                     </div>
                 </div>
-
+                
                 <div className="review_div">
                     <h3 id="review_header">Product Reviews:</h3>
 
@@ -104,6 +223,20 @@ class Product extends React.Component {
                         ) :
                         <h5 className="no_reviews">No reviews on this product yet. Let us know your thoughts through the form above!</h5>}
                 </div>
+
+                {this.state.modalForm ? (
+                    <ModalForm
+                    closeModal={this.closeModal}
+                    isOpen={this.state.isOpen}
+                    user={this.props.user}
+                    productId={this.state.id}
+                    product={this.state.product}
+                    userLists={this.props.user.lists}
+                    handleTitle={this.handleTitle}
+                    updateUserLists={this.updateUserLists}
+                    postToExistingList={this.postToExistingList}
+                    />
+                ) : null}
             </div>
         );
     }
