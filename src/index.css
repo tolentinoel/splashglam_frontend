@@ -25,7 +25,7 @@ font-weight: 500;
 }
 
 body.dark .topnav{
-  background-color: #a0709a;
+  background-color: #8f4d86;
 }
 
 body.dark .topnav a{
@@ -46,14 +46,28 @@ body.dark .profile_sideNav{
 }
 
 body.dark .profile_sideNav h5{ 
-  
+
   text-transform: uppercase;
-  
+
 }
+
+body.dark .profile_content h3{ 
+
+  font-family: 'Playfair Display SC', serif;
+  font-weight: 900;
+}
+
  /* ----------------LIGHT MODE DEFAULT---------- */
  body.light {
   background-color: white;
   color: rgb(68, 0, 53);
+}
+
+body.light .product #bookmark_txt{
+  /* font-weight: 900; */
+  margin-bottom: 0px;
+  font-family: 'Abril Fatface', cursive;
+  
 }
 
 nav {

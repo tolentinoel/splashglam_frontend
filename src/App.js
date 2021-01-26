@@ -50,12 +50,12 @@ class App extends React.Component {
 
   renderProductPage = (r_props) => {
     return (
-      <Product productId={r_props.match.params.id} user={this.state.user} darkMode={this.state.darkMode}/>
+      <Product productId={r_props.match.params.id} user={this.state.user} />
     );
   };
 
   renderProductList = () => {
-    return <ProductList createList={this.createList} user={this.state.user} darkMode={this.state.darkMode}/>;
+    return <ProductList createList={this.createList} user={this.state.user} />;
   };
 
   renderProfilePage = () => {
