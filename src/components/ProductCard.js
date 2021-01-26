@@ -106,7 +106,7 @@ class ProductCard extends Component {
             })
               .then((resp) => resp.json())
               .then((data) => {
-                // this.renderToast(data);
+              
                 console.log(data)
                 alert('Successfully added to list!')
               });

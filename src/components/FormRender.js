@@ -95,9 +95,6 @@ class FormRender extends Component {
               {this.props.name === "Login" ?
               <h5>Don't have an account? <Link to="/signup" >Sign up!</Link></h5> : null }
 
-              {/* {this.props.name === "Update" ?
-              <Button id="delete_btn" variant="outline-danger" type="submit" onClick={this.handleSubmit}>Delete Account</Button> : null } */}
-
             </div>
           );
 

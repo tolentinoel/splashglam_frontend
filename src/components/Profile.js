@@ -16,8 +16,7 @@ class Profile extends Component {
     viewLists: false,
     dropDownTitle: "Your Lists",
     listCollection: null,
-    selectedList: null,
-    darkProfile: this.props.darkMode
+    selectedList: null
   }
 
   componentDidMount() {
@@ -30,26 +29,25 @@ class Profile extends Component {
     })
     .then(res => res.json())
     .then(data => {
-     
         this.setState({
-            
             listCollection: data
         })
     })
   }
 
-  // handleListDelete = () => {
+  handleListDelete = (id) => {
 
-  //   fetch(`http://localhost:3000/users/${this.state.user.id}`, {
-  //     method:  "DELETE",
-  //     headers: {"Content-Type": "application/json"}
-  //   })
-  //   .then(res => res.json())
-  //   .then(() => {
-  //     alert("Account deleted.")
-  //     this.handleLogout()
-  //   })
-  // }
+    fetch(`http://localhost:3000/lists/${id}`, {
+      method:  "DELETE",
+      headers: {"Content-Type": "application/json"},
+    })
+    .then(res => res.json())
+    .then(() => {
+      alert("List deleted.")
+      window.location.reload()
+    })
+    
+  }
 
   mapUserList = () => {
     if (this.props.user) {
@@ -102,7 +100,7 @@ class Profile extends Component {
           <h3>{selected[0].title}</h3>
           <div className="miniCard">
             {selected[0].products.map(prd => (
-                <Card style={{ width: "15rem" }} className="mini" >
+                <Card style={{ width: "14rem" }} className="mini" >
                   <Link to={"/products/" + prd.id}>
                     <Card.Img variant="top" src={prd.image} alt=""/>
                   </Link>
@@ -120,13 +118,14 @@ class Profile extends Component {
             ))
           }
           </div>
-          {/* <Button
+          <Button
+              id= "delete_list"
               key="delete_list"
               variant="outline-warning"
-              onClick={this.handleListDelete}
+              onClick={() => this.handleListDelete(this.state.selectedList)}
             >
               Delete List
-          </Button> */}
+          </Button>
       </div>
     )
   }
@@ -136,6 +135,7 @@ class Profile extends Component {
   }
 
   profileContent = () => {
+
     switch (true){
       case this.state.update:
         return(
@@ -161,16 +161,17 @@ class Profile extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
-        <div className={this.props.darkMode ? "darkProfile_sideNav" : "profile_sideNav"}>
+        <div className="profile_sideNav">
           <ButtonGroup vertical className="btn_grp" >
             <Button key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
-              Edit Profile
+              <h5>Edit Profile</h5>
             </Button>
 
             <DropdownButton
+              className = "drop_list"
               key="dropdown"
               variant="outline-info"
               as={ButtonGroup}
@@ -181,11 +182,12 @@ class Profile extends Component {
             </DropdownButton>
 
             <Button key="button3" variant="outline-info" href="/products" id="back_to_prd">
-              Back to Products
+            <h5>Back to Products</h5>
             </Button>
-            
+
           </ButtonGroup>
           <Button
+              id="delete_accnt"
               key="button4"
               variant="outline-danger"
               onClick={() => this.props.handleDelete()}
@@ -197,7 +199,7 @@ class Profile extends Component {
 
         {/* ------------------- PROFILE PAGE CONTENT --------------- */}
         <div className={this.props.darkMode ? "darkProfile_div" : "profile_div"}>
-          
+
           {this.profileContent()}
 
         </div>

@@ -196,18 +196,6 @@ class App extends React.Component {
       });
   };
 
-  // toggleDark = () => {
-  //   this.state.darkMode ?
-  //     this.setState({ darkMode: false }, () => {
-  //       console.log("LET THERE BE LIGHT")
-
-  //     })
-  //     :
-  //     this.setState({ darkMode: true }, () => {
-  //       console.log("BROWNOUT AGAIN")
-  //     })
-  // }
-
   render() {
 
     return (

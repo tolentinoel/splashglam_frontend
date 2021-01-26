@@ -118,10 +118,7 @@ class ProductList extends Component {
           </Tab>
         </Tabs>
 
-        {/* DO CONDITIONAL RENDERING ON h1, MIGHT NEED TO CONTROL IT USING STATE */}
 
-  
-        
       </div>
     );
   }
