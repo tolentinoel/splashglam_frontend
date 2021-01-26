@@ -20,41 +20,52 @@
     width: 300px;
     background: aliceblue;
     padding-top: 50px;
+    font-family: 'Playfair Display SC', serif;
 }
 
-.darkProfile_sideNav{
+/* .darkProfile_sideNav{
     float: left;
     align-items: center;
     height: 100vh;
     width: 300px;
     background: #2b192e;
     padding-top: 50px;
-}
+} */
 
 .btn_grp{
-    width: 190px;
-    height: 40%;
-    margin-bottom: 200px;
-    text-align:center;
+    width: 180px;
+    height: 27%;
+    margin-bottom: 235px;
+    text-align: center;
 }
 
 #back_to_prd{
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .profile_content{
     /* display: inline-block; */
-    padding-top: 40px;
     height: 100%;
     width: 90%;
+    padding-top: 40px;
+    /* border-bottom: solid;
+    border-bottom-style: double;
+    border-bottom-color: aqua;
+    padding-bottom: 10px; */
 }
 
-#greeting1{
+#greeting{
     margin: 15px;
+    border-bottom: solid;
+    border-bottom-style: double;
+    border-bottom-color: aqua;
+    padding-bottom: 10px;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: 900;
+    
 }
 
 #greeting2{
-
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -91,8 +102,24 @@
 .prd_name{
     font-size: 16px;
     color: rgb(83, 11, 83);
+    
+}
+
+.prd_brand{
+    font-family: 'Abril Fatface', cursive;
+    
 }
 
 .card-text{
     font-size: 18px;
+}
+
+#delete_list{
+ margin-top: 35px
+}
+#delete_accnt{
+    margin-left: 72px;
+    display: flex;
+    position: absolute;
+    bottom: 50px;
 }

@@ -16,24 +16,53 @@ body {
   transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
 }
 
-body.light {
-  background-color: white;
-  color: rgb(37, 12, 4);
-  font-weight: 400;
-}
 
+ /* ----------------DARK MODE---------- */
 body.dark {
 background-color: rgb(27, 24, 34);
-color:  #cbb575;
+color:  #e9cd79;
 font-weight: 500;
+}
+
+body.dark .topnav{
+  background-color: #a0709a;
+}
+
+body.dark .topnav a{
+  color: white;
+}
+body.dark .topnav .profile_btn{
+  color: white;
+}
+
+body.dark h1{
+  font-family: 'Playfair Display SC', serif;
+  font-weight: 900;
+}
+
+body.dark .profile_sideNav{ 
+    background: #351b3f;
+    
+}
+
+body.dark .profile_sideNav h5{ 
+  
+  text-transform: uppercase;
+  
+}
+ /* ----------------LIGHT MODE DEFAULT---------- */
+ body.light {
+  background-color: white;
+  color: rgb(68, 0, 53);
 }
 
 nav {
   background: var(--text-color);
 }
 
+
 nav a{
   text-decoration: none;
   text-transform: uppercase;
-  color: rgb(13, 138, 127);
+  color: rgb(14, 187, 172);
 }
