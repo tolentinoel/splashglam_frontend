@@ -6,5 +6,5 @@
 
 .tab-content{
     overflow-y: scroll;
-    height: 745px;
+    height: 100vh;
 }

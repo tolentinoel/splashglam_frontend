@@ -1,6 +1,7 @@
 .p_card_div{
     display: inline-block;
     margin: 8px;
+    box-shadow: 6px 6px 8px 0px rgb(206 208 209 / 51%)
 }
 
 .p_card{

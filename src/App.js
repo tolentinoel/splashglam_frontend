@@ -16,7 +16,7 @@ class App extends React.Component {
   state = {
     user: "",
     token: ""
-  
+
   };
 
   componentDidMount() {
@@ -199,71 +199,93 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="App" >
-        <TopNav
-          loggedIn={!!this.state.user}
-          handleLogout={this.handleLogout}
-          renderProfilePage={this.renderProfilePage}
-          toggleDark = {this.toggleDark}
-          darkMode = {this.state.darkMode}
-        />
-        
+      // <div className="App_container">
+        <div className="App" >
+          <TopNav
+            loggedIn={!!this.state.user}
+            handleLogout={this.handleLogout}
+            renderProfilePage={this.renderProfilePage}
+            toggleDark = {this.toggleDark}
+            darkMode = {this.state.darkMode}
+          />
+
         <Switch>
-          <Route exact path="/login">
-            {!!localStorage.getItem("jwt") ? (
-              <Redirect to="/products" />
-            ) : (
-              <Route path="/login" exact component={this.renderForm} />
-            )}
-          </Route>
-
-          <Route exact path="/signup">
-            {!!localStorage.getItem("jwt") ? (
-              <Redirect to="/login" />
+            <Route exact path="/login">
+              {!!localStorage.getItem("jwt") ? (
+                <Redirect to="/products" />
               ) : (
-              <Route path="/signup" exact component={this.renderForm} />
-            )}
-          </Route>
+                <Route path="/login" exact component={this.renderForm} />
+              )}
+            </Route>
 
-          <Route exact path="/products">
-            {!!localStorage.getItem("jwt") ? (
-              <Route exact path="/products" render={this.renderProductList} />
-            ) : (
-              <Redirect to="/" />
-            )}
-          </Route>
-
-          <Route exact path="/products/:id">
-            {!!localStorage.getItem("jwt") ? (
-              <Route
-                exact
-                path="/products/:id"
-                render={this.renderProductPage}
-              />
-            ) : (
-              <Redirect to="/" />
-            )}
-          </Route>
-
-          <Route exact path="/">
-            {!!localStorage.getItem("jwt") ? (
+            <Route exact path="/signup">
+              {!!localStorage.getItem("jwt") ? (
                 <Redirect to="/login" />
+                ) : (
+                <Route path="/signup" exact component={this.renderForm} />
+              )}
+            </Route>
+
+            <Route exact path="/products">
+              {!!localStorage.getItem("jwt") ? (
+                <Route exact path="/products" render={this.renderProductList} />
               ) : (
-                <Route path="/" render={this.renderHome} />
-            )}
-          </Route>
+                <Redirect to="/" />
+              )}
+            </Route>
 
-          <Route exact path="/profile">
-            {!!localStorage.getItem("jwt") ? (
-              <Route exact path="/profile" render={this.renderProfilePage} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
+            <Route exact path="/products/:id">
+              {!!localStorage.getItem("jwt") ? (
+                <Route
+                  exact
+                  path="/products/:id"
+                  render={this.renderProductPage}
+                />
+              ) : (
+                <Redirect to="/" />
+              )}
+            </Route>
 
-          <Route component={NotFound} />
-        </Switch>
+            <Route exact path="/">
+              {!!localStorage.getItem("jwt") ? (
+                  <Redirect to="/login" />
+                ) : (
+                  <Route path="/" render={this.renderHome} />
+              )}
+            </Route>
+
+            <Route exact path="/profile">
+              {!!localStorage.getItem("jwt") ? (
+                <Route exact path="/profile" render={this.renderProfilePage} />
+              ) : (
+                <Redirect to="/login" />
+              )}
+            </Route>
+
+            <Route component={NotFound} />
+          </Switch>
+
+
+        <div className='footer'>
+          <a target='blank' href="https://dev.to/tolentinoel">
+            <img id="dev_to" src="https://cdn4.iconfinder.com/data/icons/logos-and-brands-1/512/84_Dev_logo_logos-512.png" alt="Ellaine Tolentino's DEV Community Profile" height="35" width="35"/>
+          </a>
+
+          <a target='blank' href="https://github.com/tolentinoel">
+            <img id="github" src="https://cdn.onlinewebfonts.com/svg/img_154680.png" alt="Ellaine Tolentino's Github Profile" height="35" width="35"/>
+          </a>
+
+          <a target='blank' href="https://www.linkedin.com/in/ellainet/">
+            <img id="linked_in" src="https://image.flaticon.com/icons/png/512/61/61109.png" alt="Ellaine Tolentino's LinkedIn Profile" height="33" width="33"/>
+          </a>
+
+          <a target='blank' href="https://twitter.com/tolentinoEL">
+            <img id="twitter" src="https://image.flaticon.com/icons/png/512/23/23681.png" alt="Ellaine's Twitter Profile" height="33" width="33"/>
+          </a>
+        </div>
+
       </div>
+    // </div>
     );
   }
 }

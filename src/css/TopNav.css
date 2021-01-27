@@ -1,5 +1,6 @@
 .topnav{
-    background: #ffdae0;
+    background: #dfd0fa;
+     /* #ffdae0; */
     justify-content: space-between;
 }
 
@@ -11,11 +12,21 @@
 }
 
 .profile_btn{
-	margin-right: 8px;
+    margin-right: 10px;
     border-radius: 25px;
     font-size: medium;
     border-width: 2px;
-    border-color: #02dded;
-    padding: 3px;
+    border-color: #c9faff;
+    padding: 2px;
+}
+
+.profile_btn:hover, .profile_btn:focus{
+    border-color: #c9faff;
+    background: #c9faff;
+
+}
+
+.topnav_btn_div{
+    font-family: 'Merriweather', serif;
 }
 

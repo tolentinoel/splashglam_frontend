@@ -41,12 +41,24 @@
 .p_brand{
     width: 50%;
     display: inline-block;
+    text-decoration: none;
 }
+.p_brand:hover{
+    width: 50%;
+    display: inline-block;
+    text-decoration: none;
+    color: navy;
+}
+
 .p_photo{
     margin-top: 20px;
     /* margin-right: 40px; */
     width: 35%;
     float: left;
+}
+
+.p_price{
+    font-size:18px;
 }
 .p_description{
     display: inline-block;
@@ -114,7 +126,7 @@
 .text_area_div{
     display: flex;
     flex-direction: column;
-    
+    margin-bottom: 30px;
 }
 
 .review_btn{

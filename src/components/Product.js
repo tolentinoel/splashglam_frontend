@@ -115,7 +115,7 @@ class Product extends React.Component {
         const listObject = this.state.newList;
         let user = this.props.user.id;
         let productId = this.state.id;
-  
+
         fetch("http://localhost:3000/lists", {
           method: "POST",
           headers: {
@@ -192,21 +192,23 @@ class Product extends React.Component {
                     <img src={this.state.product.image_url} alt="skincare product" className="p_photo"/>
 
                     <div className = "info_div">
-                        <h1 className="p_name">{this.state.product.name}</h1>
-                        <h2 className="p_brand">{this.state.product.brand}</h2>
-                        <p className="p_description">{this.state.product.description}</p>
-                        <p className="p_price">Current Market Price: <b>{this.state.product.price}</b></p>
-                        <Form className="text_area_div">
+                      <h1 className="p_name">{this.state.product.name}</h1>
+                      <a target="blank" href={this.state.product.brand_url} className="p_brand"><h2>{this.state.product.brand}</h2></a>
+                      <p className="p_description">{this.state.product.description}</p>
+                      <p className="p_price">Current Market Price: <b>{this.state.product.price}</b></p>
+                      <Form className="text_area_div">
                         <Form.Group className="text_area">
-                            <p>Share you thoughts with other users! </p>
-                            <Form.Label htmlFor="review">Review this product</Form.Label>
-                            <Form.Control as="textarea" value={this.state.reviewContent} onChange={this.obtainReview} rows={3} />
+                          {/* <p>Share you thoughts with other users! </p> */}
+                          <Form.Label htmlFor="review">Review this product</Form.Label>
+                          <Form.Control as="textarea" value={this.state.reviewContent} onChange={this.obtainReview} rows={3} />
                         </Form.Group>
                         <Button className="review_btn" variant="warning" type="submit" onClick={this.addReview}>Submit</Button>
-                    </Form>
+                      </Form>
+                      <a target="blank" href={this.state.product.url} className="p_brand"><h5>Click here to purchase!</h5></a>
+
                     </div>
                 </div>
-                
+
                 <div className="review_div">
                     <h3 id="review_header">Product Reviews:</h3>
 
