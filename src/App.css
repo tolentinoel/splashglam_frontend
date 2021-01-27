@@ -11,6 +11,26 @@
   
 }
 
+.footer {
+  background: #dfd0fa;
+  position: sticky;
+  width: 100%;
+  height: 45px;
+  bottom: 0;
+  padding-top: 6px;
+}
+
+ #github, #linked_in, #twitter{
+  margin-left: 8px;
+  border-radius: 12px;
+  filter: contrast(0.5);
+}
+#dev_to{
+  margin-left: 8px;
+  border-radius: 18px;
+  filter: contrast(0.5);
+}
+
 
 /* #f1bc68 - butterscotch yellow*/
 /* #5f9595 - emerald sea - blue green */

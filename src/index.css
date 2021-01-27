@@ -14,10 +14,12 @@ body {
   color: var(--text-color);
   font-weight: var(--font-weight);
   transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
+  
 }
 
 
- /* ----------------DARK MODE---------- */
+ /* ----------------DARK MODE WHOLE APP--------------- */
+
 body.dark {
 background-color: rgb(27, 24, 34);
 color:  #e9cd79;
@@ -25,7 +27,27 @@ font-weight: 500;
 }
 
 body.dark .topnav{
-  background-color: #8f4d86;
+  background-color: #1aadc5;;
+}
+
+body.dark .footer{
+  background-color: #1aadc5;;
+}
+
+body.dark .footer #github{
+  filter:invert(1);
+}
+
+body.dark .footer #linked_in{
+  filter:invert(1);
+}
+
+body.dark .footer #dev_to{
+  filter:invert(1);
+}
+
+body.dark .footer #twitter{
+  filter:invert(1);
 }
 
 body.dark .topnav a{
@@ -39,25 +61,34 @@ body.dark h1{
   font-family: 'Playfair Display SC', serif;
   font-weight: 900;
 }
+ /* --------------------DARK MODE PROFILE------------------ */
+body.dark .profile_sideNav{
+    background: #2c3237;
 
-body.dark .profile_sideNav{ 
-    background: #351b3f;
-    
 }
 
-body.dark .profile_sideNav h5{ 
+body.dark .profile_sideNav h5{
 
   text-transform: uppercase;
 
 }
 
-body.dark .profile_content h3{ 
+body.dark .profile_content h3{
 
   font-family: 'Playfair Display SC', serif;
   font-weight: 900;
 }
 
- /* ----------------LIGHT MODE DEFAULT---------- */
+body.dark #user_profile{
+  background: rgb(122 81 186 / 18%);
+}
+
+
+body.dark .p_card_div{
+  box-shadow: 6px 6px 8px 0px rgb(206 208 209 / 51%)
+}
+
+ /* -----------------------LIGHT MODE DEFAULT------------------ */
  body.light {
   background-color: white;
   color: rgb(68, 0, 53);
@@ -67,7 +98,7 @@ body.light .product #bookmark_txt{
   /* font-weight: 900; */
   margin-bottom: 0px;
   font-family: 'Abril Fatface', cursive;
-  
+
 }
 
 nav {

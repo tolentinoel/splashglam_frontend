@@ -100,12 +100,12 @@ class Profile extends Component {
           <h3>{selected[0].title}</h3>
           <div className="miniCard">
             {selected[0].products.map(prd => (
-                <Card style={{ width: "14rem" }} className="mini" >
+                <Card style={{ width: "14rem" }} className="mini" key={prd.id.toString()}>
                   <Link to={"/products/" + prd.id}>
                     <Card.Img variant="top" src={prd.image} alt=""/>
                   </Link>
                   <ListGroup className="list-group-flush mini" key={prd.id.toString()}>
-                    <Card.Text className="prd_brand" >
+                    <Card.Text className="prd_brand" key={prd.id}>
                     {prd.brand}
                     </Card.Text>
                   </ListGroup>
@@ -152,9 +152,15 @@ class Profile extends Component {
         default:
           return (
             <div className="profile_content">
-              <h1 id="greeting">Hey {this.props.user.username}!</h1>
-              <h5 id="greeting2">Skin Type: {this.props.user.skin_type}</h5>
-              <h5 id="greeting3">Name: {this.props.user.name}</h5>
+              <div id="user_profile">
+                <img id="avatar" src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/39777262_2139166969427269_557845998970339328_n.png?_nc_cat=109&ccb=2&_nc_sid=174925&_nc_ohc=jp2rjJoBdTwAX_oOUTh&_nc_ht=scontent-sjc3-1.xx&oh=6ec0f2e9bfc031901821aea0abea9cd8&oe=603483BD" alt="User's profile avatar"/>
+                <div id="text_div">
+                  <h1 id="greeting">Hello, {this.props.user.username}!</h1>
+                  <h5 id="greeting2">Skin Type: {this.props.user.skin_type}</h5>
+                  <h5 id="greeting3">Name: {this.props.user.name}</h5>
+                  <h5 id="greeting4">Age: {this.props.user.age}</h5>
+                </div>
+              </div>
             </div>
           )
       }
@@ -163,7 +169,7 @@ class Profile extends Component {
   render() {
 
     return (
-      <div>
+      <div id="profile_main">
         <div className="profile_sideNav">
           <ButtonGroup vertical className="btn_grp" >
             <Button key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
