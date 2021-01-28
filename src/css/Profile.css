@@ -35,6 +35,11 @@
    
 }
 
+/* height: 100vh;
+padding-left: 70px;
+padding-right: 70px;
+padding-top: 35px; */
+
 .profile_content h3{
 
     font-family: 'Playfair Display SC', serif;
@@ -50,11 +55,12 @@
     padding-top: 10px;
     padding-left: 45px;
     padding-right: 45px;
+    margin-left: auto;
+    margin-right: auto;
     height: 225px;
-    border-radius: 24px;
-    border-width: thin;
+    width: 850px;
     background: rgb(254 110 65 / 21%);
-
+    border-radius: 30px;
 }
 
 #avatar{

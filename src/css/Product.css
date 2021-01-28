@@ -28,7 +28,7 @@
 }
 
 .info_div{
-    width: 60%;
+    width: 55%;
     display: inline-block;
     margin-left: 60px;
     padding-top: 20px;
@@ -43,6 +43,7 @@
     display: inline-block;
     text-decoration: none;
 }
+
 .p_brand:hover{
     width: 50%;
     display: inline-block;
@@ -52,8 +53,7 @@
 
 .p_photo{
     margin-top: 20px;
-    /* margin-right: 40px; */
-    width: 35%;
+    width: 420px;
     float: left;
 }
 
@@ -141,12 +141,14 @@
 }
 
 .review_div{
-    width: 85%;
+    width: 100%;
+    padding-right: 52px;
 }
 
 #content{
-    width: 75%;
+    width: 665px;
     padding-top: 10px;
+    height: 36px;
 }
 
 
@@ -160,7 +162,7 @@
 }
 
 #user_info{
-    padding-left: 30px;
+    padding-left: 20px;
     border-left: solid;
     border-left-width: thin;
     border-left-color: #ffffff42;
