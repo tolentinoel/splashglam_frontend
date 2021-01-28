@@ -5,12 +5,12 @@
 
 ### Screenshots
    ![Home Page on light mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/LightMode_home.png)
-   ![Home Page on dark mode](splashglam_frontend/src/screenshots/DarkMode_home.png)
-   ![Product List on light mode](splashglam_frontend/src/screenshots/LightMode_main.png)
-   ![Product List on dark mode](splashglam_frontend/src/screenshots/DarkMode_main.png)
-   ![Example product page](splashglam_frontend/src/screenshots/productpage.png)
-   ![Creating list](splashglam_frontend/src/screenshots/CreateList.png)
-   ![Viewing bookmarked products](splashglam_frontend/src/screenshots/ViewLists.png)
+   ![Home Page on dark mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/DarkMode_home.png)
+   ![Product List on light mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/LightMode_main.png)
+   ![Product List on dark mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/DarkMode_main.png)
+   ![Example product page](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/productpage.png)
+   ![Creating list](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/CreateList.png)
+   ![Viewing bookmarked products](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/ViewLists.png)
 
 ### Technology Used
     -Ruby on Rails
