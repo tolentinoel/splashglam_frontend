@@ -4,7 +4,7 @@
 
 
 ### Screenshots
-   ![Home Page on light mode](splashglam_frontend/src/screenshots/LightMode_home.png)
+   ![Home Page on light mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/LightMode_home.png)
    ![Home Page on dark mode](splashglam_frontend/src/screenshots/DarkMode_home.png)
    ![Product List on light mode](splashglam_frontend/src/screenshots/LightMode_main.png)
    ![Product List on dark mode](splashglam_frontend/src/screenshots/DarkMode_main.png)
