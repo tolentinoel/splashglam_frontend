@@ -2,16 +2,9 @@
 ## SplashGlam_frontend
     This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Background
 
 ### Screenshots
-    (./src/screenshots/LightMode_home.png) 
-    (./src/screenshots/DarkMode_home.png)
-    ![Main Page on Light Mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/LightMode_main.png)
-    ![Main Page on Dark Mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/DarkMode_main.png)
-    ![Form to create or choose existing list](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/CreateList.png)
-    ![Viewing user's list](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/ViewLists.png)
-    ![Example Product Page on Light Mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/productpage.png)
+   
     
 ### Technology Used
     -Ruby on Rails
