@@ -5,8 +5,8 @@
 ### Background
 
 ### Screenshots
-    (https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/LightMode_home.png) 
-    (https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/DarkMode_home.png)
+    (./src/screenshots/LightMode_home.png) 
+    (./src/screenshots/DarkMode_home.png)
     ![Main Page on Light Mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/LightMode_main.png)
     ![Main Page on Dark Mode](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/DarkMode_main.png)
     ![Form to create or choose existing list](https://github.com/tolentinoel/splashglam_frontend/blob/main/src/screenshots/CreateList.png)
