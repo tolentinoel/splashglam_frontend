@@ -199,7 +199,7 @@ class App extends React.Component {
   render() {
 
     return (
-      // <div className="App_container">
+
         <div className="App" >
           <TopNav
             loggedIn={!!this.state.user}
@@ -285,7 +285,7 @@ class App extends React.Component {
         </div>
 
       </div>
-    // </div>
+
     );
   }
 }

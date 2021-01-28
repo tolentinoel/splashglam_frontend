@@ -64,9 +64,9 @@ class ModalForm extends Component {
 
   mapList = () => {
     
-    return this.props.userLists.map((list_obj) => (
+    return this.props.userLists.map((list_obj, index) => (
       <Dropdown.Item
-        key={list_obj.id}
+        key={index}
         eventKey={list_obj.id}
         onClick={() => {
             // this.handleClick(list_obj)

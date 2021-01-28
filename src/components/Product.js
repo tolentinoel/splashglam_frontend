@@ -7,16 +7,16 @@ import '../css/Product.css';
 
 class Product extends React.Component {
 
-    state ={
-        product: "",
-        reviewContent: "",
-        id: this.props.productId,
-        productReviews: [],
-        isOpen: false,
-        modalForm: false,
-        newList: null,
-        userLists: []
-    }
+  state ={
+      product: "",
+      reviewContent: "",
+      id: this.props.productId,
+      productReviews: [],
+      isOpen: false,
+      modalForm: false,
+      newList: null,
+      userLists: []
+  }
 
     componentDidMount() {
         fetch(`http://localhost:3000/products/${this.state.id}`,{
@@ -79,20 +79,20 @@ class Product extends React.Component {
     }
 
     renderModalForm = (p) =>
-        this.setState({
-            modalForm: true,
-            product: p
+      this.setState({
+        modalForm: true,
+        product: p
     })
 
     openModal = (p, p_id) =>
-        this.setState({
-            isOpen: true,
-            product: p,
-            id: p_id
+      this.setState({
+        isOpen: true,
+        product: p,
+        id: p_id
     })
 
     closeModal = () =>
-        this.setState({
+      this.setState({
         isOpen: false,
         modalForm: false
     })
@@ -185,7 +185,7 @@ class Product extends React.Component {
 
     render() {
         return (
-            <div className="product">
+            <div className="product" key="productDiv">
                     <Button className ="back_to_prd" variant="info" href='/products'><p id='bk_to_prd_txt'>Back to Products</p></Button>
                     <Button className="bookmark_onPage" onClick={() => this.createList(this.state.product, this.state.id)}><p id='bookmark_txt'>Bookmark</p></Button>
                 <div className="product_section">
@@ -213,16 +213,17 @@ class Product extends React.Component {
                     <h3 id="review_header">Product Reviews:</h3>
 
                     {this.state.productReviews.length !== 0 ?
-                        this.state.productReviews.map(rvw =>
-                        <div className="rvw">
-                            <div id="content">
-                                <p>{rvw.content}</p>
-                            </div>
-                            <div id="user_info">
-                                <p>-- <b>{rvw.user}</b>, {rvw.user_age} |  Skin Type: {rvw.user_skin_type}</p>
-                            </div>
-                        </div>
-                        ) :
+                        this.state.productReviews.map(( rvw, index ) => {
+                        return  <div className="rvw" key={index}>
+                                  <div id="content" >
+                                      <p>{rvw.content}</p>
+                                  </div>
+                                  <div id="user_info" key={rvw.id+2}>
+                                      <p>-- <b>{rvw.user}</b>, {rvw.user_age} |  Skin Type: {rvw.user_skin_type}</p>
+                                  </div>
+                                </div>
+                            }) 
+                        :
                         <h5 className="no_reviews">No reviews on this product yet. Let us know your thoughts through the form above!</h5>}
                 </div>
 
