@@ -20,7 +20,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://splashglam-api.herokuapp.com//lists`,{
+    fetch(`https://splashglam-api.herokuapp.com/lists`,{
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ class Profile extends Component {
 
   handleListDelete = (id) => {
 
-    fetch(`https://splashglam-api.herokuapp.com//lists/${id}`, {
+    fetch(`https://splashglam-api.herokuapp.com/lists/${id}`, {
       method:  "DELETE",
       headers: {"Content-Type": "application/json"},
     })
@@ -153,7 +153,7 @@ class Profile extends Component {
           return (
             <div className="profile_content">
               <div id="user_profile">
-                <img id="avatar" src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/39777262_2139166969427269_557845998970339328_n.png?_nc_cat=109&ccb=2&_nc_sid=174925&_nc_ohc=jp2rjJoBdTwAX_oOUTh&_nc_ht=scontent-sjc3-1.xx&oh=6ec0f2e9bfc031901821aea0abea9cd8&oe=603483BD" alt="User's profile avatar"/>
+                <img id="avatar" src="https://64.media.tumblr.com/84365fe19039b5fd917d6d449ca86290/tumblr_op4lb5DPRe1qg6rkio1_1280.jpg" alt="User's profile avatar"/>
                 <div id="text_div">
                   <h1 id="greeting">Hello, {this.props.user.username}!</h1>
                   <h5 id="greeting2">Skin Type: {this.props.user.skin_type}</h5>
