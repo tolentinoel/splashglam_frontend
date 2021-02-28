@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/button";
+import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import ModalForm from "./ModalForm";
 import "../css/ProductCard.css";

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import '../css/NotFound.css';
+import '../css/NotFound.css';;;
 
 class NotFound extends Component {
     render() {
