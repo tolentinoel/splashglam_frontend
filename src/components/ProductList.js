@@ -16,7 +16,7 @@ class ProductList extends Component {
 
 
   componentDidMount() {
-    fetch("http://localhost:3000/products")
+    fetch("https://splashglam-api.herokuapp.com//products")
       .then((resp) => resp.json())
       .then((data) => {
           let dry = data.filter(prd => prd.tag.includes("dry"))

@@ -72,7 +72,7 @@ class ProductCard extends Component {
     let user = this.props.user.id;
     let productId = this.state.productId;
     // debugger
-    fetch("http://localhost:3000/lists", {
+    fetch("https://splashglam-api.herokuapp.com//lists", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ class ProductCard extends Component {
             };
           },
           () => {
-            fetch("http://localhost:3000/list_products", {
+            fetch("https://splashglam-api.herokuapp.com//list_products", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -120,7 +120,7 @@ class ProductCard extends Component {
     let productId = this.state.productId
     let listId = list_obj.id
 
-    fetch("http://localhost:3000/list_products", {
+    fetch("https://splashglam-api.herokuapp.com//list_products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

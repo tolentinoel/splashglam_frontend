@@ -15,7 +15,7 @@ class ModalForm extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/users/${this.props.user.id}`,{
+    fetch(`https://splashglam-api.herokuapp.com//users/${this.props.user.id}`,{
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ class ModalForm extends Component {
 
   handleClick = (data) => {
     //   debugger
-    fetch(`http://localhost:3000/list_products`, {
+    fetch(`https://splashglam-api.herokuapp.com//list_products`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

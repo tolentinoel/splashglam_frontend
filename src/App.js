@@ -21,7 +21,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (localStorage.getItem("jwt")) {
-      fetch("http://localhost:3000/getuser", {
+      fetch("https://splashglam-api.herokuapp.com//getuser", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +110,7 @@ class App extends React.Component {
       age: parseInt(info.age),
       password: info.password,
     };
-    this.handleAuth(data, "http://localhost:3000/users", "POST");
+    this.handleAuth(data, "https://splashglam-api.herokuapp.com//users", "POST");
   };
 
   handleLogin = (info) => {
@@ -118,7 +118,7 @@ class App extends React.Component {
       username: info.username,
       password: info.password,
     };
-    this.handleAuth(data, "http://localhost:3000/login", "POST");
+    this.handleAuth(data, "https://splashglam-api.herokuapp.com//login", "POST");
   };
 
   handleUpdate = (info) => {
@@ -128,12 +128,12 @@ class App extends React.Component {
       age: parseInt(info.age),
     };
 
-    this.handleAuth(data, `http://localhost:3000/users/${info.id}`, "PATCH");
+    this.handleAuth(data, `https://splashglam-api.herokuapp.com//users/${info.id}`, "PATCH");
   };
 
   handleDelete = () => {
 
-    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+    fetch(`https://splashglam-api.herokuapp.com//users/${this.state.user.id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })

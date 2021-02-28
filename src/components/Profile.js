@@ -20,7 +20,7 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/lists`,{
+    fetch(`https://splashglam-api.herokuapp.com//lists`,{
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ class Profile extends Component {
 
   handleListDelete = (id) => {
 
-    fetch(`http://localhost:3000/lists/${id}`, {
+    fetch(`https://splashglam-api.herokuapp.com//lists/${id}`, {
       method:  "DELETE",
       headers: {"Content-Type": "application/json"},
     })

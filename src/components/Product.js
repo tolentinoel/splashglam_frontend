@@ -19,7 +19,7 @@ class Product extends React.Component {
   }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/products/${this.state.id}`,{
+        fetch(`https://splashglam-api.herokuapp.com//products/${this.state.id}`,{
           method: 'GET',
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ class Product extends React.Component {
         let prd_id = parseInt(this.state.id)
         // debugger
 
-        fetch('http://localhost:3000/reviews', {
+        fetch('https://splashglam-api.herokuapp.com//reviews', {
           method:  "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({
@@ -116,7 +116,7 @@ class Product extends React.Component {
         let user = this.props.user.id;
         let productId = this.state.id;
 
-        fetch("http://localhost:3000/lists", {
+        fetch("https://splashglam-api.herokuapp.com//lists", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -136,7 +136,7 @@ class Product extends React.Component {
                 };
               },
               () => {
-                fetch("http://localhost:3000/list_products", {
+                fetch("https://splashglam-api.herokuapp.com//list_products", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
@@ -163,7 +163,7 @@ class Product extends React.Component {
         let productId = this.state.id
         let listId = list_obj.id
 
-        fetch("http://localhost:3000/list_products", {
+        fetch("https://splashglam-api.herokuapp.com//list_products", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
