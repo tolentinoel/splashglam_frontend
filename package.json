@@ -2,6 +2,10 @@
   "name": "splashglam_frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "15.x",
+    "npm" : "6.x"
+  },
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
