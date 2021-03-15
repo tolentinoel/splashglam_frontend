@@ -73,7 +73,7 @@
 .back_to_prd:hover, .back_to_prd:focus{
     background-color: rgb(47, 224, 236);
     border-color: transparent;
-    
+
 }
 
 .bookmark_onPage{
@@ -169,3 +169,23 @@
     padding-top: 15px;
 }
 
+/* NEED TO FIGURE OUT MOBILE VERSION ON SCALE */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
