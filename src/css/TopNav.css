@@ -30,3 +30,35 @@
     font-family: 'Merriweather', serif;
 }
 
+
+/*smartphones mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px){
+
+    .brand_text{
+        font-size: 1em;
+    }
+
+
+
+
+}
+
+
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+   
+}
+
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px){
+
+
+}
+
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+
+}
