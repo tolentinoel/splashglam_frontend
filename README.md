@@ -1,6 +1,6 @@
 
-## SplashGlam_frontend
-    This project is deployed and hosted at Heroku - Click [SplashGlam](http://splashglam.herokuapp.com/) for your browser experience!
+# SplashGlam_frontend
+    This project is deployed and hosted at Heroku - http://splashglam.herokuapp.com/ for your browser experience!
 
 
 ### Screenshots
