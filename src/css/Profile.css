@@ -207,7 +207,7 @@ padding-top: 35px; */
         padding: 5px;
         right: 36vw;
         display: block;
-        bottom: -2rem;
+        bottom: 4rem;
     }
 
 
@@ -237,7 +237,11 @@ padding-top: 35px; */
     /* ELEMENTS FROM BOOKMARKED LIST */
 
     .mini_card_div{
-        height: 75vh;
+        padding-top: 1em;
+        border-width: thin;
+        border-style: dotted;
+        border-color: lightgrey;
+        height: 67vh;
     }
 
     .mini{
@@ -250,5 +254,11 @@ padding-top: 35px; */
         gap: 15px 0px;
         grid-template-columns: 1fr 1fr;
         padding: 25px 20px 5px 20px;
+    }
+
+    #delete_list{
+        margin-top: 64px;
+        margin-bottom: 30px;
+    
     }
 }
