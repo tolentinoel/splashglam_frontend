@@ -32,7 +32,7 @@
     height: 100%;
     width: 100%;
     padding: 50px;
-   
+
 }
 
 /* height: 100vh;
@@ -85,7 +85,7 @@ padding-top: 35px; */
     padding-bottom: 10px;
     font-family: 'Playfair Display SC', serif;
     font-weight: 900;
-    
+
 }
 
 #greeting2, #greeting3, #greeting4{
@@ -119,12 +119,12 @@ padding-top: 35px; */
 .prd_name{
     font-size: 16px;
     color: rgb(83, 11, 83);
-    
+
 }
 
 .prd_brand{
     font-family: 'Abril Fatface', cursive;
-    
+
 }
 
 .card-text{
@@ -154,8 +154,15 @@ padding-top: 35px; */
         align-items: center;
         height: 77px;
         width: 100%;
-        
+
     }
+
+
+    .profile_content{
+        padding :0px;
+    }
+
+
     .btn_grp{
         margin-left: auto;
         margin-right: auto;
@@ -174,7 +181,7 @@ padding-top: 35px; */
         border-radius: 24px;
         padding: 4px;
     }
-    
+
 
     #bg-vertical-dropdown-1-profile {
         height: 36px;
@@ -195,9 +202,12 @@ padding-top: 35px; */
     }
 
     #delete_accnt {
-        position: absolute;
-        bottom: 3rem;
-        right: 8rem;
+        border-radius: 12px;
+        font-size: 12px;
+        padding: 5px;
+        right: 35vw;
+        display: block;
+        bottom: 4rem;
     }
 
 
