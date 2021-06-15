@@ -203,11 +203,11 @@ padding-top: 35px; */
 
     #delete_accnt {
         border-radius: 12px;
-        font-size: 12px;
+        font-size: 11px;
         padding: 5px;
-        right: 35vw;
+        right: 36vw;
         display: block;
-        bottom: 4rem;
+        bottom: -2rem;
     }
 
 
@@ -232,5 +232,23 @@ padding-top: 35px; */
     #greeting{
         font-size: xx-large;
         margin: 0;
+    }
+
+    /* ELEMENTS FROM BOOKMARKED LIST */
+
+    .mini_card_div{
+        height: 75vh;
+    }
+
+    .mini{
+        width: 11rem!important;
+        margin:0;
+    }
+
+    .miniCard{
+        display: grid;
+        gap: 15px 0px;
+        grid-template-columns: 1fr 1fr;
+        padding: 25px 20px 5px 20px;
     }
 }
