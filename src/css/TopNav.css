@@ -40,12 +40,16 @@
 
     .profile_btn{
         font-size: 12px;
+        margin-right: 6px;
     }
 
     .profile_btn a{
         padding: 4px;
     }
 
+    .topnav{
+        padding: .5rem 0.2rem;
+    }
 
 }
 

@@ -43,15 +43,17 @@
   }
 
 
-
+/* MOBILE PORTRAIT */
   @media (min-width: 320px) and (max-width: 480px){
 
     #darkMode{
-      position: absolute;
-      right: 184px;
-      border-radius: 16px;
+      position: relative;
+      right: -1em;
+      bottom: -1px;
+      border-radius: 21px;
       width: 51px;
-       height: 45px;
+      height: 36px;
+      background-size: 30px 30px;
 
     }
   }
