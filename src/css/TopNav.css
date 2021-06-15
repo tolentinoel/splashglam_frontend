@@ -38,7 +38,13 @@
         font-size: 1em;
     }
 
+    .profile_btn{
+        font-size: 12px;
+    }
 
+    .profile_btn a{
+        padding: 4px;
+    }
 
 
 }

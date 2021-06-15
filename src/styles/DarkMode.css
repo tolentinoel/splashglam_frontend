@@ -41,4 +41,17 @@
     color: #fff;
     
   }
-  
+
+
+
+  @media (min-width: 320px) and (max-width: 480px){
+
+    #darkMode{
+      position: absolute;
+      right: 184px;
+      border-radius: 16px;
+      width: 51px;
+       height: 45px;
+
+    }
+  }

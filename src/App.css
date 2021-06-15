@@ -32,6 +32,21 @@
 }
 
 
+/*smartphones mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px){
+
+  .footer img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer{
+    padding-top: 4px;
+    height: 38px;
+  }
+}
+
+
 /* #f1bc68 - butterscotch yellow*/
 /* #5f9595 - emerald sea - blue green */
 /* #abb8bb - smoke - bluish grey*/
