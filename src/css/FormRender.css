@@ -14,3 +14,13 @@
 .login_signup form{
     display: inline-block;
 }
+
+
+/* MOBILE PORTRAIT */
+@media (min-width: 320px) and (max-width: 480px){
+
+    .login_signup{
+        width: 100%;
+    }
+
+}

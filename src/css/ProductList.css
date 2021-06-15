@@ -8,3 +8,25 @@
     overflow-y: scroll;
     height: 100vh;
 }
+
+/* MOBILE PORTRAIT */
+@media (min-width: 320px) and (max-width: 480px){
+
+    .product_list{
+        padding: 0;
+    }
+
+    .nav-tabs{
+        font-size: 17px;
+        padding-left: 16px;
+    }
+
+    .nav-link{
+        padding: .5rem .5rem;
+    }
+
+    nav a{
+        color: rgb(1 157 144);
+    }
+
+}
