@@ -3,7 +3,7 @@
     background-size: 40px 40px;
     width: 60px;
     height: 50px;
-    background-color: rgb(0, 217, 255);
+    background-color: rgb(253, 253, 253);
     border: none;
     outline:none;
     border-radius: 36%;
@@ -37,7 +37,7 @@
 
   #darkMode.clicked:hover {
     background-color: rgb(125, 103, 224);
-    box-shadow: 0px 8px 5px rgba(42, 247, 127, 0.507);
+    box-shadow: 0px 8px 5px rgb(192 224 48);
     color: #fff;
     
   }
@@ -48,7 +48,7 @@
 
     #darkMode{
       position: relative;
-      right: -1em;
+      right: -10px;
       bottom: -1px;
       border-radius: 21px;
       width: 51px;
@@ -56,4 +56,16 @@
       background-size: 30px 30px;
 
     }
+
+    #darkMode.clicked{
+      border-radius: 21px;
+      width: 51px;
+      height: 36px;
+      background-size: 25px 29px;
+    }
+
+    #darkMode.clicked:hover{
+      box-shadow: 0px 5px 3px rgb(192 224 48);
+    }
+
   }

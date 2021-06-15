@@ -56,11 +56,13 @@
     }
 
     .home_jumbotron{
-        padding: 1em 1em 5em;
+        padding: .5em 1em 0em;
+        height: min-content;
     }
 
-    p {
+    .home_jumbotron p {
         line-height: normal;
+        font-size: 18px;
     }
 
 

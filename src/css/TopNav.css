@@ -35,7 +35,9 @@
 @media (min-width: 320px) and (max-width: 480px){
 
     .brand_text{
-        font-size: 1em;
+        font-size: 1.1em;
+        margin-left: 6%;
+        margin-bottom: 1%;
     }
 
     .profile_btn{
