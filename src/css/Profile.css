@@ -146,6 +146,10 @@ padding-top: 35px; */
 /* MOBILE PORTRAIT */
 @media (min-width: 320px) and (max-width: 480px){
 
+    .profile_div{
+        display: block;
+    }
+
     .profile_sideNav{
         align-items: center;
         height: 77px;
@@ -156,7 +160,7 @@ padding-top: 35px; */
         margin-left: auto;
         margin-right: auto;
         flex-direction: row;
-        /* width: -moz-fit-content; */
+        gap: 10px;
         width: fit-content;
         align-items: flex-end;
     }
@@ -188,5 +192,35 @@ padding-top: 35px; */
         font-size: 15px;
         margin: 0;
         line-height: 13px;
+    }
+
+    #delete_accnt {
+        position: absolute;
+        bottom: 3rem;
+        right: 8rem;
+    }
+
+
+    #user_profile {
+        flex-direction: column;
+        height: 400px;
+        width: 300px;
+        top: 1rem;
+        padding: 1em 0;
+        margin-top: 3em;
+    }
+
+    #avatar{
+        width: 42%;
+        height: 42%;
+        border-radius: 62px;
+        margin-top: 12px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #greeting{
+        font-size: xx-large;
+        margin: 0;
     }
 }
