@@ -29,4 +29,13 @@
         color: rgb(1 157 144);
     }
 
+    .tab-content{
+        padding-top: 1em;
+    }
+
+    .tab-content h1{
+        font-variant: petite-caps;
+        font-size: 1.9rem;
+    }
+
 }

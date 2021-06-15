@@ -141,3 +141,52 @@ padding-top: 35px; */
     position: absolute;
     bottom: 85px;
 }
+
+
+/* MOBILE PORTRAIT */
+@media (min-width: 320px) and (max-width: 480px){
+
+    .profile_sideNav{
+        align-items: center;
+        height: 77px;
+        width: 100%;
+        
+    }
+    .btn_grp{
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: row;
+        /* width: -moz-fit-content; */
+        width: fit-content;
+        align-items: flex-end;
+    }
+
+    .btn_grp h5{
+        font-size: 17px;
+    }
+
+    #editProfile{
+        height: 36px;
+        border-radius: 24px;
+        padding: 4px;
+    }
+    
+
+    #bg-vertical-dropdown-1-profile {
+        height: 36px;
+        border-radius: 24px;
+        padding: 4px;
+    }
+
+    #back_to_prd {
+        height: 36px;
+        border-radius: 24px;
+        padding: 4px;
+    }
+
+    #back_to_prd h5{
+        font-size: 15px;
+        margin: 0;
+        line-height: 13px;
+    }
+}
