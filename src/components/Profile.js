@@ -172,7 +172,7 @@ class Profile extends Component {
       <div id="profile_main">
         <div className="profile_sideNav">
           <ButtonGroup vertical className="btn_grp" >
-            <Button key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
+            <Button id="editProfile" key="button1" variant="outline-info" onClick={()=> this.updateProfile(this.props.user)}>
               <h5>Edit Profile</h5>
             </Button>
 

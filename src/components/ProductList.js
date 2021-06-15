@@ -105,15 +105,15 @@ class ProductList extends Component {
             {this.mapProductData(this.state.key)}
           </Tab>
           <Tab eventKey="norm_combi" title="Normal/Combination">
-            <h1>For Normal/Combination skin</h1>
+            <h1>Normal/Combination Skin Type</h1>
             {this.mapProductData(this.state.key)}
           </Tab>
           <Tab eventKey="oily" title="Oily">
-            <h1>For Oily skin</h1>
+            <h1>Oily Skin Type</h1>
             {this.mapProductData(this.state.key)}
           </Tab>
           <Tab eventKey="dry" title="Dry">
-            <h1>For Dry skin</h1>
+            <h1>Dry Skin Type</h1>
             {this.mapProductData(this.state.key)}
           </Tab>
         </Tabs>
