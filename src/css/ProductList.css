@@ -39,3 +39,14 @@
     }
 
 }
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+    .product_list{
+        padding: 0;
+    }
+
+    .nav-tabs{
+        padding-left: 17%;
+    }
+}
