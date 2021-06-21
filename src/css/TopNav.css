@@ -53,6 +53,10 @@
         padding: .5rem 0.2rem;
     }
 
+    .navbar-brand{
+        font-size: 1.05rem;
+    }
+
 }
 
 
