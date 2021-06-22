@@ -169,23 +169,150 @@
     padding-top: 15px;
 }
 
-/* NEED TO FIGURE OUT MOBILE VERSION ON SCALE */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
 
+/* MOBILE PORTRAIT */
+@media (min-width: 320px) and (max-width: 480px){
+
+    .product{
+        text-align: center;
+        padding: 30px 25px 25px 25px;
+    }
+
+    .product_section{
+        display: block;
+    }
+
+    .p_photo{
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .info_div{
+        width: 100%;
+        padding-top: 20px;
+        margin: auto;
+    }
+
+    .p_name{
+        line-height: 35px;
+    }
+
+    .p_brand h2{
+        width: 100%;
+        font-size: 27px;
+    }
+
+    .p_description{
+        font-size: 18px;
+        line-height: initial;
+    }
+
+    .text_area_div{
+        align-items: center;
+    }
+
+    .p_brand{
+        width: 80%;
+    }
+
+    .text_area{
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .review_div{
+        padding: 0;
+    }
 }
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
 
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+
+    .product{
+        text-align: center;
+        padding: 30px 45px 25px 45px;
+    }
+
+    .product_section{
+        display: block;
+    }
+
+    .p_photo{
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .info_div{
+        width: 100%;
+        padding-top: 20px;
+        margin: auto;
+    }
+
+    .p_name{
+        line-height: 35px;
+    }
+
+    .p_brand h2{
+        width: 100%;
+        font-size: 27px;
+    }
+
+    .p_description{
+        font-size: 18px;
+        line-height: initial;
+    }
+
+    .text_area_div{
+        align-items: center;
+    }
+
+    .p_brand{
+        width: 80%;
+    }
+
+    .text_area{
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .review_div{
+        padding: 0;
+    }
 }
 
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px){
+
+    .product_section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .product{
+        padding: 2em 2em;
+    }
+
+    .p_photo{
+        width: 75%;
+    }
+
+    .info_div{
+        width: 93%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .text_area_div{
+        align-items: center;
+    }
+
+
+    .text_area{
+        width: 70%;
+    }
 
 }
