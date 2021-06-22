@@ -226,3 +226,57 @@
 }
 
 
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+
+    .product{
+        text-align: center;
+        padding: 30px 45px 25px 45px;
+    }
+
+    .product_section{
+        display: block;
+    }
+
+    .p_photo{
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .info_div{
+        width: 100%;
+        padding-top: 20px;
+        margin: auto;
+    }
+
+    .p_name{
+        line-height: 35px;
+    }
+
+    .p_brand h2{
+        width: 100%;
+        font-size: 27px;
+    }
+
+    .p_description{
+        font-size: 18px;
+        line-height: initial;
+    }
+
+    .text_area_div{
+        align-items: center;
+    }
+
+    .p_brand{
+        width: 80%;
+    }
+
+    .text_area{
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .review_div{
+        padding: 0;
+    }
+}

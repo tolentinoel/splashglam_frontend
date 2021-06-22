@@ -268,3 +268,136 @@ padding-top: 35px; */
         margin: -24px auto;
     }
 }
+
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+
+    .profile_div{
+        display: block;
+
+    }
+
+    .profile_sideNav{
+        align-items: center;
+        height: 77px;
+        width: 100%;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    #profile_main{
+        height: 156vh;
+    }
+
+
+    .profile_content{
+        padding :0px;
+    }
+
+
+    .btn_grp{
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: row;
+        gap: 10px;
+        width: fit-content;
+        align-items: flex-end;
+    }
+
+    .btn_grp h5{
+        font-size: 15px;
+        margin:0;
+    }
+
+    #editProfile{
+        height: 36px;
+        border-radius: 24px;
+        padding: 4px;
+    }
+
+
+    #bg-vertical-dropdown-1-profile {
+        height: 36px;
+        border-radius: 24px;
+        padding: 4px;
+    }
+
+    #back_to_prd {
+        height: 36px;
+        border-radius: 24px;
+        padding: 4px;
+    }
+
+    #back_to_prd h5{
+        font-size: 15px;
+        margin: 0;
+        line-height: 13px;
+    }
+
+    #delete_accnt {
+        border-radius: 12px;
+        font-size: 11px;
+        padding: 5px;
+        right: 17rem;
+        display: block;
+        bottom: -13rem;
+    }
+
+
+    #user_profile {
+        flex-direction: column;
+        height: 400px;
+        width: 58vw;
+        top: 1rem;
+        padding: 1em 0;
+        margin-top: 3em;
+    }
+
+    #avatar{
+        width: 46%;
+        height: 46%;
+        border-radius: 62px;
+        margin-top: 12px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #greeting{
+        font-size: xx-large;
+        margin: 0;
+    }
+
+    /* ELEMENTS FROM BOOKMARKED LIST */
+
+    .mini_card_div{
+        padding-top: 1em;
+        border-width: thin;
+        border-style: dotted;
+        border-color: lightgrey;
+        height: 67vh;
+    }
+
+    .mini{
+        width: 18rem!important;
+        margin:0;
+        justify-self: center;
+    }
+
+    .miniCard{
+        display: grid;
+        gap: 15px 0px;
+        grid-template-columns: 1fr 1fr;
+        padding: 25px 0px 5px 6px;
+    }
+
+    #delete_list{
+        margin-top: 64px;
+        margin-bottom: 30px;
+
+    }
+
+    #delete_accnt{
+        margin: -24px auto;
+    }
+}

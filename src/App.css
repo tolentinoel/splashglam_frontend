@@ -46,6 +46,13 @@
   }
 }
 
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+
+  .footer{
+    position: fixed;
+  }
+}
 
 /* #f1bc68 - butterscotch yellow*/
 /* #5f9595 - emerald sea - blue green */
