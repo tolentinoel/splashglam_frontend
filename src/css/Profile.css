@@ -536,3 +536,19 @@ padding-top: 35px; */
         margin: -24px auto;
     }
 }
+
+
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+    #delete_accnt{
+        bottom: 0px;
+        right: 43%;
+        margin: 0;
+    }
+
+
+    #user_profile{
+        top: 2rem;
+    }
+}
