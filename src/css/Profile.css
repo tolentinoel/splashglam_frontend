@@ -355,7 +355,7 @@ padding-top: 35px; */
     }
 
     #avatar{
-        width: 46%;
+        width: 40%;
         height: 46%;
         border-radius: 62px;
         margin-top: 12px;
@@ -398,7 +398,9 @@ padding-top: 35px; */
     }
 
     #delete_accnt{
-        margin: -24px auto;
+        bottom: -200px;
+        right: 43%;
+        margin: 0;
     }
 }
 
