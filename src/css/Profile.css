@@ -6,7 +6,6 @@
 
 
 .profile_sideNav{
-
     float: left;
     align-items: center;
     height: 100vh;
@@ -35,13 +34,8 @@
 
 }
 
-/* height: 100vh;
-padding-left: 70px;
-padding-right: 70px;
-padding-top: 35px; */
 
 .profile_content h3{
-
     font-family: 'Playfair Display SC', serif;
     font-weight: 900;
 }
@@ -104,7 +98,6 @@ padding-top: 35px; */
     height: 750px;
     overflow-y: scroll;
 }
-
 
 .miniCard{
     display: flex;
@@ -209,7 +202,7 @@ padding-top: 35px; */
         padding: 5px;
         right: 36vw;
         display: block;
-        bottom: 4rem;
+        bottom: 6rem;
     }
 
 
@@ -339,9 +332,10 @@ padding-top: 35px; */
         border-radius: 12px;
         font-size: 11px;
         padding: 5px;
-        right: 17rem;
         display: block;
-        bottom: -0rem;
+        bottom: -200px;
+        right: 43%;
+        margin: 0;
     }
 
 
@@ -369,7 +363,6 @@ padding-top: 35px; */
     }
 
     /* ELEMENTS FROM BOOKMARKED LIST */
-
     .mini_card_div{
         padding-top: 1em;
         border-width: thin;
