@@ -81,8 +81,12 @@
     }
 
     .home_jumbotron p {
-        line-height: normal;
-        font-size: 19px;
+        line-height: 20px;
+        font-size: 17px;
+    }
+
+    .chunky_footer{
+        display: none;
     }
 }
 

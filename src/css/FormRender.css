@@ -24,3 +24,12 @@
     }
 
 }
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+    .login_signup{
+        width: auto;
+        margin-top: 6px;
+        line-height: 12px;
+    }
+}
