@@ -21,8 +21,8 @@
         padding-left: 10px;
     }
 
-    .nav-link{
-        padding: .5rem .5rem;
+    .nav-link {
+        padding: 5px 8px;
     }
 
     nav a{
@@ -47,6 +47,11 @@
     }
 
     .nav-tabs{
-        padding-left: 17%;
+        padding-left: 19%;
+        font-size: large;
+    }
+
+    .nav-link {
+        padding: 5px 8px;
     }
 }

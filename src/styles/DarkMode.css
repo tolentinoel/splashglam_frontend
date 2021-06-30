@@ -79,7 +79,7 @@
     width: 67px;
     height: 34px;
     border-radius: 42px;
-    right: 219px;
+    right: 190px;
   }
 
   #darkMode.clicked{
@@ -87,7 +87,7 @@
     width: 70px;
     height: 35px;
     border-radius: 42px;
-    right: 219px;
+    right: 190px;
   }
 
   #darkMode.clicked:hover{

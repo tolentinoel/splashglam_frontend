@@ -67,7 +67,9 @@
     height: 30px;
   }
 
-  
+  body.dark h1{
+    font-size: revert;
+  }
 }
 
 /* #f1bc68 - butterscotch yellow*/

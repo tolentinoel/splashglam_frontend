@@ -68,8 +68,13 @@
         height: 49px;
     }
 
-    .nav-link{
-        padding: .1rem .2rem;
+    .nav-link {
+        padding: 5px 8px;
+    }
+
+    .profile_btn{
+        font-size: 12px;
+        margin-right: 6px;
     }
 }
 
