@@ -51,6 +51,7 @@
 
     .about_header{
         line-height: 1em;
+        font-size: 24px;
     }
 
     .home_jumbotron{
@@ -60,7 +61,7 @@
 
     .home_jumbotron p {
         line-height: normal;
-        font-size: 18px;
+        font-size: 19px;
     }
 
 
