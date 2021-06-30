@@ -63,7 +63,19 @@
 
 /*low resolution tablets, mobiles (landscape)*/
 @media (min-width: 481px) and (max-width: 767px){
-   
+
+    .topnav{
+        height: 49px;
+    }
+
+    .nav-link {
+        padding: 5px 8px;
+    }
+
+    .profile_btn{
+        font-size: 12px;
+        margin-right: 6px;
+    }
 }
 
 

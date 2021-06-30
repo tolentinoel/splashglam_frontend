@@ -25,6 +25,7 @@
   border-radius: 12px;
   filter: contrast(0.5);
 }
+
 #dev_to{
   margin-left: 8px;
   border-radius: 18px;
@@ -51,6 +52,23 @@
 
   .footer{
     position: fixed;
+    height: 40px;
+    padding-top: 3px;
+  }
+
+  #dev_to{
+    width: 33px;
+    height: 33px;
+    border-radius: 12px;
+  }
+
+  #github, #linked_in, #twitter {
+    width: 30px;
+    height: 30px;
+  }
+
+  body.dark h1{
+    font-size: revert;
   }
 }
 

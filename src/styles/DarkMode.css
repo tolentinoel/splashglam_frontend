@@ -69,3 +69,33 @@
     }
 
   }
+
+
+  /*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+
+  #darkMode {
+    background-size: 29px 30px;
+    width: 67px;
+    height: 34px;
+    border-radius: 42px;
+    right: 190px;
+  }
+
+  #darkMode.clicked{
+    background-size: 26px 39px;
+    width: 70px;
+    height: 35px;
+    border-radius: 42px;
+    right: 190px;
+  }
+
+  #darkMode.clicked:hover{
+    box-shadow: 0px 4px 4px 0px rgb(192 224 48);
+  }
+
+  #darkMode:hover, #darkMode:focus {
+    box-shadow: -1px 4px 2px rgb(248 195 50 / 74%);
+  }
+
+}
