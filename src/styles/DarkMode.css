@@ -69,3 +69,17 @@
     }
 
   }
+
+
+  /*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+
+  #darkMode {
+    background-size: 35px 42px;
+    width: 70px;
+    height: 39px;
+    border-radius: 42px;
+    right: 219px;
+  }
+
+}

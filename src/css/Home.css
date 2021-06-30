@@ -63,8 +63,6 @@
         line-height: normal;
         font-size: 19px;
     }
-
-
 }
 
 
@@ -72,8 +70,22 @@
 /*low resolution tablets, mobiles (landscape)*/
 @media (min-width: 481px) and (max-width: 767px){
 
+    .about_header{
+        line-height: 1em;
+        font-size: 24px;
+    }
 
+    .home_jumbotron{
+        padding: .5em 1em 0em;
+        height: min-content;
+    }
+
+    .home_jumbotron p {
+        line-height: normal;
+        font-size: 19px;
+    }
 }
+
 
 
 /*tablets, ipads (portrait)*/

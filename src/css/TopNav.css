@@ -63,7 +63,14 @@
 
 /*low resolution tablets, mobiles (landscape)*/
 @media (min-width: 481px) and (max-width: 767px){
-   
+
+    .topnav{
+        height: 60px;
+    }
+
+    .nav-link{
+        padding: .1rem .2rem;
+    }
 }
 
 
