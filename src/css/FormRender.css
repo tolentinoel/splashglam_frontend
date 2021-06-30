@@ -29,7 +29,18 @@
 @media (min-width: 481px) and (max-width: 767px){
     .login_signup{
         width: auto;
-        margin-top: 6px;
+        margin-top: 22px;
         line-height: 12px;
+        height: 165vh;
+    }
+
+    .login_signup h1{
+        font-size: xx-large;
+        margin-bottom: 22px;
+    }
+
+    label{
+        margin-bottom: .75rem;
+        margin-top: .5rem;
     }
 }
